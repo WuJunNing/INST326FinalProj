@@ -1,2 +1,6 @@
 hello
+<<<<<<< HEAD
 Jun here
+=======
+Edit Line
+>>>>>>> 01e7a839fb2225114fdf2d3a86db0dbfa034ce84
