@@ -42,26 +42,56 @@ import random
 
 class Store():
     def __init__(self, start_rent, maxinv):
+        """Initializes the attributes for the Store class.
         
+        Args: 
+            start_rent (int): the amount of rent for the store.
+            maxinv (int): the maximum number of items that can be in 
+                the player's inventory.
+        
+        Side effects:
+            Initializes the attributes profit, money, inv, prices, rent, maxinv.
+        """
         self.profit = 0
         self.money = 1000
         self.inv = {}
+        self.prices = {}
         #self.salary = salary
         self.rent = start_rent
         self.maxinv = maxinv
-    def buy_inventory():
+        
+    def buy_inventory(wholesale_stock):
+        """
+        Allows the player to buy items for their store inventory from a  
+            wholesale inventory. 
+        
+        Args: 
+            wholesale_stock (dictionary {string:float}): the items available
+            for the player to purchase for their store. Structure of the 
+            dictionary is {"item name":<unit price>}.
+        
+        Returns:
+            inv (dictionary {string:int}): a dictionary of the items a player 
+                has in their store inventory. Structure of the dictionary
+                is {"item name":<quantity of item in inventory>}.
+        
+        Side effects:
+            can modify the variables money and inv. 
+        """
         pass
     def set_prices():
         pass
     def manage_expenses():
         pass
+    
 class GameState():
     """A class that can run a full store simluation game.
     
     Attributes:
-        day (int): the current day of the simulation
-        wholesale_stock (dictionary{string:float}): the items available
-            for the player to purchase for their store.
+        day (int): the current day of the simulation.
+        wholesale_stock (dictionary {string:float}): the items available
+            for the player to purchase for their store. Structure of the 
+            dictionary is {"item name":<unit price>}.
     """
     
     def __init__(self, products):
@@ -69,8 +99,9 @@ class GameState():
         stock avaliable to purchase during the simulation.
         
         Args:
-            products (dictionary{string:float}): the items available
-            for the player to purchase for their store.
+            products (dictionary {string:float}): the items available
+            for the player to purchase for their store. Structure of the 
+            dictionary is {"item name":<unit price>}.
             
         Side effects:
             Initializes the attributes wholesale_stock and day.
@@ -119,7 +150,7 @@ class GameState():
                 store (Store): a Store object. 
             
             Side Effects:
-                Can modify the variables profit and funds.
+                Can modify the variables profit and money.
             """
         pass
     
