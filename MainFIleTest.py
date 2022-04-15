@@ -32,7 +32,14 @@ class Player():
             Initializes the attributes name and score'''
         self.name = name
         self.score = score
+        
 class Store():
+    ''' Creates the Store class.
+    Attributes:
+        name(str): the name of the player
+        funds(int): the funds available for the player
+        size()
+    '''
     def __init__(self,name, Funds, size, inv):
         self.name = name
         self.funds = Funds
