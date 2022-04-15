@@ -41,16 +41,16 @@ from re import L
 import random
 
 class Store():
-    def __init__(self, start_rent, maxinv):
+    def __init__(self, start_rent, max_inv):
         """Initializes the attributes for the Store class.
         
         Args: 
             start_rent (int): the amount of rent for the store.
-            maxinv (int): the maximum number of items that can be in 
+            max_inv (int): the maximum number of items that can be in 
                 the player's inventory.
         
         Side effects:
-            Initializes the attributes profit, money, inv, prices, rent, maxinv.
+            Initializes the attributes profit, money, inv, prices, rent, max_inv.
         """
         self.profit = 0
         self.money = 1000
@@ -58,30 +58,45 @@ class Store():
         self.prices = {}
         #self.salary = salary
         self.rent = start_rent
-        self.maxinv = maxinv
+        self.max_inv = max_inv
         
-    def buy_inventory(wholesale_stock):
+    def buy_inventory(self, wholesale_stock):
         """
         Allows the player to buy items for their store inventory from a  
             wholesale inventory. 
         
         Args: 
-            wholesale_stock (dictionary {string:float}): the items available
+            wholesale_stock (dict {string:float}): the items available
             for the player to purchase for their store. Structure of the 
-            dictionary is {"item name":<unit price>}.
+            dictionary is {"item name":<unit price>}. 
         
         Returns:
-            inv (dictionary {string:int}): a dictionary of the items a player 
+            inv (dict {string:int}): a dictionary of the items a player 
                 has in their store inventory. Structure of the dictionary
                 is {"item name":<quantity of item in inventory>}.
         
         Side effects:
-            can modify the variables money and inv.  
+            Can modify the attributes money and inv.  
         """
         pass
-    def set_prices():
+    
+    def set_prices(self):
+        """Allows the player to set the prices for items in their store.
+        
+        Side effects: 
+            Prints instructions and information to the terminal for the player
+                to set prices interactively.
+            Can modify the prices attribute. 
+        """
         pass
-    def manage_expenses():
+    
+    def manage_expenses(self):
+        """Allows the user to manage employee salaries and view store rent. 
+        
+        Side effects:
+            Prints instructions and information to the terminal for the player
+                to manage employee salaries interactively.
+        """
         pass
     
 class GameState():
@@ -89,7 +104,7 @@ class GameState():
     
     Attributes:
         day (int): the current day of the simulation.
-        wholesale_stock (dictionary {string:float}): the items available
+        wholesale_stock (dict {string:float}): the items available
             for the player to purchase for their store. Structure of the 
             dictionary is {"item name":<unit price>}.
     """
@@ -99,7 +114,7 @@ class GameState():
         stock avaliable to purchase during the simulation.
         
         Args:
-            products (dictionary {string:float}): the items available
+            products (dict {string:float}): the items available
             for the player to purchase for their store. Structure of the 
             dictionary is {"item name":<unit price>}.
             
@@ -133,8 +148,8 @@ class GameState():
             
         Side effects: 
             Prints information to the terminal for the player to
-            manage the store and see the results of the day.
-            Can modifiy the variables inv, emp_sal, profit, and funds.
+                manage the store and see the results of the day.
+            Can modifiy the attributes inv, emp_sal, profit, and funds.
         """
         pass
     
@@ -150,7 +165,7 @@ class GameState():
                 store (Store): a Store object. 
             
             Side Effects:
-                Can modify the variables profit and money.
+                Can modify the attributes profit and money.
             """
         pass
     
