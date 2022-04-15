@@ -76,7 +76,7 @@ class Store():
                 is {"item name":<quantity of item in inventory>}.
         
         Side effects:
-            can modify the variables money and inv. 
+            can modify the variables money and inv.  
         """
         pass
     def set_prices():
