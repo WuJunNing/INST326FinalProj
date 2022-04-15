@@ -22,6 +22,16 @@ class Player():
         name (str): the name of the player
         score (int): the score achieved by the player, which is their profit
     '''
+    def __init__(self, name, score=0):
+        '''Sets the attributes of the Player object.
+        Args:
+            name(str): the name of the player
+            score(int): the profit made by the player. the default value
+            is 0
+        Side effects:
+            Initializes the attributes name and score'''
+        self.name = name
+        self.score = score
 class Store():
     def __init__(self,name, Funds, size, inv):
         self.name = name
