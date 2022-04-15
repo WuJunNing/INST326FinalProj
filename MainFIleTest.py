@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 placeHolderItems = {"Milk": 3.30, "Meat": 5.00, "Cereal":4.00}
 class employee():
@@ -6,6 +7,8 @@ class employee():
         self.salary = salary
         self.schedule = schedule
         
+=======
+>>>>>>> cec4b2fa1038420e5849aecf5908f281967a9bd7
 class Store():
     def __init__(self,name, Funds, size, inv):
         self.name = name
@@ -20,6 +23,7 @@ class Store():
             return amountPurchased
         else:
             print("Purchased declined")
+<<<<<<< HEAD
     def setPrices(self, InventorySelection, newPrice):
         print("Current Store prices for inventory items")
         [print("lineItem\n") for lineItem in placeHolderItems]
@@ -28,3 +32,6 @@ class Store():
         placeHolderItems[f"{InventorySelection}"] = NewPrice
         placeHoldCont = input(f"{InventorySelection} New Price Set: {newPrice}")
     
+=======
+            
+>>>>>>> cec4b2fa1038420e5849aecf5908f281967a9bd7
