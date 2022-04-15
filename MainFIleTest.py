@@ -1,5 +1,3 @@
-#====================================================================================
-#Luis Gomez Code Part
 from re import L
 import random
 
@@ -16,6 +14,14 @@ class Employee():
             a working day
     '''
     def __init__(self, name, salary, schedule):
+        ''' Initializes the attributes for the Employee object.
+        Args:   
+            name(str): the name of the employee
+            salary(int): the salary of the employee
+            schedule(dict): the schedule of the employee
+        Side effects:
+            sets the attribute values for the Employee object
+        '''
         self.name = name
         self.salary = salary
         self.schedule = schedule
@@ -29,7 +35,7 @@ class Manager(Employee):
 class Worker(Employee):
     '''Creates the class Worker, a subclass of Employee
     '''
-
+    
 class Player():
     '''Creates the Player class.
     Attributes:
@@ -37,7 +43,7 @@ class Player():
         score (int): the score achieved by the player, which is their profit
     '''
     def __init__(self, name, score=0):
-        '''Sets the attributes of the Player object.
+        '''Initializes the attributes of the Player object.
         Args:
             name(str): the name of the player
             score(int): the profit made by the player. the default value
@@ -56,21 +62,47 @@ class Store():
         inventory(): the inventory of the player
     '''
     def __init__(self,name, Funds, size, inv):
-        '''
+        ''' Initializes the attributes for the Store object.
+        Args:
+            name (str): the name of the player
+            funds (int): the funds available to the player
+            size():
+            inv(): the current inventory of the player's store
+        Side effects:
+            sets the values of the attributes of the Store object
         '''
         self.name = name
         self.funds = Funds
         self.size = size
         self.inventory = inv
     def buyInventory(self, InvItem, amountPurchased):
+        '''Purchases items for the player's inventory.
+        Args:
+            InvItem(str): the item being purchases
+            amountPurchased(int): the amount of the item being purchased
+        Returns:
+            amountPurchased(int): the amount of the item purchased
+        Side effects:
+            prints message to console for player
+        '''
         stockBuying = placeHolderItems.get(InvItem) * amountPurchased
-        confirmPurchase = input(f"Your currently purchasing {amountPurchased} of {InvItem}, this will cost you {stockBuying}, which will reduce store funds to {self.funds - stockBuying} (Y/N)")
+        confirmPurchase = input(f"Your currently purchasing {amountPurchased} \
+                                of {InvItem}, this will cost you {stockBuying}\
+                                , which will reduce store funds to \
+                                {self.funds - stockBuying} (Y/N)")
         if confirmPurchase.upper() == "Y":
             print(f"purchased {amountPurchased} {InvItem}")
             return amountPurchased
         else:
             print("Purchased declined")
     def setPrices(self, InventorySelection, newPrice):
+        ''' Sets the prices of the items in the player's inventory.
+        Args:
+            InventorySelection(str): the item in the inventory
+            newPrice(int): the new price that is being set
+        Side effects:
+            prints message for player to console
+        '''
         print("Current Store prices for inventory items")
         [print("lineItem\n") for lineItem in placeHolderItems]
         changeprice1 = input("Which item would you like to change to?")
@@ -80,6 +112,13 @@ class Store():
 
 
 def mainGame(optionsList = []):
+    ''' Shows the options for the player to choose from for each turn
+    Args:
+        optionsList(list): the list of selections the player
+        can choose from
+    Side effects:
+        prints the different choices the player can make
+    '''
     print("Main Game Menu")
     [print(optionsList.index(item)," ", item) for item in optionsList]
     
