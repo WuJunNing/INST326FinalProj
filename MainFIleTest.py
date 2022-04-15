@@ -56,7 +56,18 @@ class Store():
     def manage_expenses():
         pass
 class GameState():
+    """A class that can run a full store simluation game."""
     def __init__(self, products):
+        """Initializes the GameState object and establishes the stock avaliable
+            to purchase during the simulation.
+        
+        Args:
+            products (dictionary{string:float}): the list of items available
+            for the player to purchase for their store.
+            
+        Side effects:
+            Initializes the attributes wholesale_stock and day.
+            """
         self.day = 0
         self.wholesale_stock = products
         
