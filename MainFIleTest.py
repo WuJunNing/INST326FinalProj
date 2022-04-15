@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #====================================================================================
 #Luis Gomez Code Part
 placeHolderItems = {"Milk": 3.30, "Meat": 5.00, "Cereal":4.00}
@@ -36,7 +35,8 @@ def mainGame(optionsList = []):
     print("Main Game Menu")
     [print(optionsList.index(item)," ", item) for item in optionsList]
     
-=======
+print mainGame([])
+#=======
 from re import L
 import random
 
@@ -91,3 +91,5 @@ if __name__ == "__main__":
 
         
         
+
+#==========================================================================================
