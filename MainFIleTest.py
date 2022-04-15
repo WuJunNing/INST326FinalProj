@@ -1,5 +1,8 @@
 #====================================================================================
 #Luis Gomez Code Part
+from re import L
+import random
+
 placeHolderItems = {"Milk": 3.30, "Meat": 5.00, "Cereal":4.00}
 class Employee():
     '''Creates the Employee class. 
@@ -16,6 +19,17 @@ class Employee():
         self.name = name
         self.salary = salary
         self.schedule = schedule
+        
+class Boss(Employee):
+    ''' Creates the class Boss, a subclass of Employee
+    '''
+class Manager(Employee):
+    ''' Creates the class Manager, a subclass of Employee
+    '''
+class Worker(Employee):
+    '''Creates the class Worker, a subclass of Employee
+    '''
+
 class Player():
     '''Creates the Player class.
     Attributes:
@@ -70,9 +84,6 @@ def mainGame(optionsList = []):
     [print(optionsList.index(item)," ", item) for item in optionsList]
     
 print mainGame([])
-#=======
-from re import L
-import random
 
 class Store():
     def __init__(self, start_rent, max_inv):
@@ -216,23 +227,9 @@ class GameState():
 
 #types of days
 def event():
+    
     events = []
     dayType = random.randint(0, len(events))
-#employee class with subclasses for different positions
-class employee():
-    def __init__(salary, position):
-        self.salary = salary
-        self.position = position
-        
-class boss():
-class manager():
-class worker():
-    
+  
 if __name__ == "__main__":
     pass
-    
-
-        
-        
-
-#==========================================================================================
