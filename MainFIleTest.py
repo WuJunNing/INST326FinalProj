@@ -1,6 +1,3 @@
-from selectors import EpollSelector
-
-
 class Store():
     def __init__(self, Funds, size, inv):
         self.funds = Funds
