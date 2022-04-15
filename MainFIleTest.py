@@ -1,4 +1,5 @@
-
+#====================================================================================
+#Luis Gomez Code Part
 placeHolderItems = {"Milk": 3.30, "Meat": 5.00, "Cereal":4.00}
 class employee():
     def __init__(self, name, salary, schedule):
@@ -28,3 +29,4 @@ class Store():
         placeHolderItems[f"{InventorySelection}"] = NewPrice
         placeHoldCont = input(f"{InventorySelection} New Price Set: {newPrice}")
     
+#==========================================================================================
