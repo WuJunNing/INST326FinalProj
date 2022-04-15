@@ -42,6 +42,8 @@ class Store():
         inventory(): the inventory of the player
     '''
     def __init__(self,name, Funds, size, inv):
+        '''
+        '''
         self.name = name
         self.funds = Funds
         self.size = size
