@@ -38,7 +38,8 @@ class Store():
     Attributes:
         name(str): the name of the player
         funds(int): the funds available for the player
-        size()
+        size():
+        inventory(): the inventory of the player
     '''
     def __init__(self,name, Funds, size, inv):
         self.name = name
