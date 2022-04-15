@@ -56,30 +56,82 @@ class Store():
     def manage_expenses():
         pass
 class GameState():
-    """A class that can run a full store simluation game."""
+    """A class that can run a full store simluation game.
+    
+    Attributes:
+        day (int): the current day of the simulation
+        wholesale_stock (dictionary{string:float}): the items available
+            for the player to purchase for their store.
+    """
+    
     def __init__(self, products):
-        """Initializes the GameState object and establishes the stock avaliable
-            to purchase during the simulation.
+        """Initializes the GameState object attributes and establishes the 
+        stock avaliable to purchase during the simulation.
         
         Args:
-            products (dictionary{string:float}): the list of items available
+            products (dictionary{string:float}): the items available
             for the player to purchase for their store.
             
         Side effects:
             Initializes the attributes wholesale_stock and day.
-            """
+        """
         self.day = 0
         self.wholesale_stock = products
         
-    def run_game(self):
+    def run_game(self, store):
+        """Runs a full simulation game on a Store object, over a series of 
+            game days.
+            
+            Args: 
+                store (Store): a Store object.
+                
+            Side effects: Prints the game result to the terminal. 
+        """
         pass
-    def run_day(self):
-        pass
->>>>>>> 201f2ee452c2d79715485d1e1c61249b0201047b
     
-    def simulate_day(self):
+    def run_day(self,store):
+        """Runs one day of the simulation on a Store object. One day includes
+            the user managing the store's inventory and finances before the day, 
+            then simulated customers purchasing items that day.
+            
+        Args:
+            store (Store): a Store object.
+            
+        Returns:
+            store (Store): a Store object.
+            
+        Side effects: 
+            Prints information to the terminal for the player to
+            manage the store and see the results of the day.
+            Can modifiy the variables inv, emp_sal, profit, and funds.
+        """
         pass
-    def store_status(self):
+    
+    def simulate_day(self, store):
+        """Runs the customer purchasing simulation activities for one 
+            game day. The purchasing simulation is mainly random but may be 
+            influenced by certain external events in the game.
+            
+            Args: 
+                store (Store): a Store object.
+                
+            Returns: 
+                store (Store): a Store object. 
+            
+            Side Effects:
+                Can modify the variables profit and funds.
+            """
+        pass
+    
+    def store_status(self, store):
+        """Prints the properties of the store to the player.
+        
+        Args:
+            store (Store): a Store object.
+            
+        Side effects:
+            Prints the store propeties to the terminal. 
+        """
         pass
 
 #types of days
