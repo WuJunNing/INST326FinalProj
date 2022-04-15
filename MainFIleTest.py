@@ -1,13 +1,27 @@
 #====================================================================================
 #Luis Gomez Code Part
 placeHolderItems = {"Milk": 3.30, "Meat": 5.00, "Cereal":4.00}
-class employee():
+class Employee():
+    '''Creates the Employee class. 
+    Attributes:
+        name (str): the name of the employee
+        salary (int): the salary of the employee
+        schedule (dict): the schedule of the employee. the keys are ints 
+            which represent the days of the week, from 1-7. the values
+            are ints of 0 or 1, depending on whether the employee is working. 
+            a value of 0 represents an off day, and a value of 1 represents
+            a working day
+    '''
     def __init__(self, name, salary, schedule):
         self.name = name
         self.salary = salary
         self.schedule = schedule
-class player():
-    
+class Player():
+    '''Creates the Player class.
+    Attributes:
+        name (str): the name of the player
+        score (int): the score achieved by the player, which is their profit
+    '''
 class Store():
     def __init__(self,name, Funds, size, inv):
         self.name = name
