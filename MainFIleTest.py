@@ -266,7 +266,10 @@ class GameState():
 
 #types of days
 def event():
-    
+    ''' Randomly decides if the day will have a random event. 
+    If yes, then it will randomly select a random event for that day,
+    and execute it.
+    '''
     events = []
     dayType = random.randint(0, len(events))
   
