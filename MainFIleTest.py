@@ -6,7 +6,8 @@ class employee():
         self.name = name
         self.salary = salary
         self.schedule = schedule
-        
+class player():
+    
 class Store():
     def __init__(self,name, Funds, size, inv):
         self.name = name
@@ -28,5 +29,11 @@ class Store():
         NewPrice = placeHolderItems.get(changeprice1) 
         placeHolderItems[f"{InventorySelection}"] = NewPrice
         placeHoldCont = input(f"{InventorySelection} New Price Set: {newPrice}")
+
+
+def mainGame(optionsList = []):
+    print("Main Game Menu")
+    [print(optionsList.index(item)," ", item) for item in optionsList]
+    
     
 #==========================================================================================
