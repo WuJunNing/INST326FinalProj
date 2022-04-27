@@ -220,6 +220,16 @@ class GameState():
         """
         pass
     
+    def read_stock(self, store):
+        ''' reads a file that determines the wholesale stock available. 
+        uses with statements and regex
+        '''
+        with open("storestock.txt", "r", encoding = "utf-8") as f:
+            #regular expression goes here
+            expr = ()
+            for line in f:
+                item = re.search(expr, line)
+    
     def run_day(self,store):
         """Runs one day of the simulation on a Store object. One day includes
             the user managing the store's inventory and finances before the day, 
