@@ -228,7 +228,11 @@ class GameState():
             #regular expression goes here
             expr = ()
             for line in f:
-                item = re.search(expr, line)
+                stock_item = re.search(expr, line)
+                if stock_item:
+                    stockname = stock_item.group()
+                    stockprice = stock_item.group()
+                    self.wholesale_stock[stockname] = stockprice
     
     def run_day(self,store):
         """Runs one day of the simulation on a Store object. One day includes
