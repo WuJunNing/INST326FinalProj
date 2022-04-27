@@ -1,5 +1,6 @@
 from re import L
 import random
+import pandas as pd
 
 placeHolderItems = {"Milk": 3.30, "Meat": 5.00, "Cereal":4.00}
 class Employee():
