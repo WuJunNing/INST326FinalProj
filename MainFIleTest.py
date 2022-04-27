@@ -262,6 +262,7 @@ class GameState():
         Side effects:
             Prints the store propeties to the terminal. 
         """
+        # use __str__ here
         pass
 
 #types of days
