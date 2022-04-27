@@ -199,15 +199,14 @@ class GameState():
         stock avaliable to purchase during the simulation.
         
         Args:
-            products (dict {string:float}): the items available
-            for the player to purchase for their store. Structure of the 
-            dictionary is {"item name":<unit price>}.
+            products (string): a file path to a document of the items available
+            for the player to purchase for their store.
             
         Side effects:
-            Initializes the attributes wholesale_stock and day.
+            Initializes the attribute day.
         """
         self.day = 0
-        self.wholesale_stock = products
+        
         
     def run_game(self, store):
         """Runs a full simulation game on a Store object, over a series of 
@@ -250,6 +249,7 @@ class GameState():
                 manage the store and see the results of the day.
             Can modifiy the attributes inv, emp_sal, profit, and funds.
         """
+        
         pass
     
     def simulate_day(self, store):
