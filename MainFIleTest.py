@@ -192,9 +192,10 @@ class GameState():
         wholesale_stock (dict {string:float}): the items available
             for the player to purchase for their store. Structure of the 
             dictionary is {"item name":<unit price>}.
+        store (Store): the Store object that the simulation will run on.
     """
     
-    def __init__(self, products):
+    def __init__(self, start_rent, max_inv, products):
         """Initializes the GameState object attributes and establishes the 
         stock avaliable to purchase during the simulation.
         
@@ -203,12 +204,18 @@ class GameState():
             for the player to purchase for their store.
             
         Side effects:
-            Initializes the attribute day.
+            Initializes the attributes day, store, and wholesale_stock.
         """
-        self.day = 0
+        #day is set to 1 because the day counter increases at the end of 
+        # each day
+        self.day = 1
+        #create store object
+        self.store = Store(start_rent, max_inv)
+        #initialize wholesale_stock as an empty dictionary
+        wholesale_stock = {}
         
-        
-    def run_game(self, store):
+    
+    def run_game(self):
         """Runs a full simulation game on a Store object, over a series of 
             game days.
             
@@ -217,7 +224,45 @@ class GameState():
                 
             Side effects: Prints the game result to the terminal. 
         """
-        pass
+        #populate the wholesale_stock attribute with the available stock
+        self.read_stock(self.store)
+        
+        #continues looping and running the simulation until the player 
+            #completes 14 days or runs out of money
+        while self.day < 15:
+            #player loses if they run out of money
+            if self.store.funds == 0:
+                print(f'Sorry, you ran out of money after day {self.day - 1}')
+                return
+            #halfway through the 14 days (beginning of day 8), employee salaries 
+            # are deducted from player funds
+            if self.day == 8:
+                #still need to implement: remove the amount of salary of all 
+                #the employees from the total funds in the store object. 
+                print(f'''It\'s employee payday. Employee salaries have 
+                      been deducted from your store funds. Your current funds
+                      are now {self.store.funds}''' )
+            #run one day simulation
+            self.store = self.run_day(self.store)
+        
+        #return either a win message or a lose message after 14 days. 
+        #we can edit the win condition but for now I put $500 in profit
+        if self.store.profit >= 500:
+            print(f'''Congratulations, you won the game. You made
+                  ${self.store.profit} in 14 days''')
+            return
+        else:
+            print(f'''Sorry, you lost the game. You only made 
+                  {self.store.profit} in 14 days.''')
+            return
+            
+            
+                
+            
+            
+            
+        
+       
     
     def read_stock(self, store):
         ''' reads a file that determines the wholesale stock available. 
@@ -247,10 +292,52 @@ class GameState():
         Side effects: 
             Prints information to the terminal for the player to
                 manage the store and see the results of the day.
-            Can modifiy the attributes inv, emp_sal, profit, and funds.
+            Can modifiy the attribute day.
         """
+        #print the store status to the player
+        self.store_status(self.store)
         
-        pass
+        while True:
+            manage_store = input(f'''Type "B" to buy more inventory, type "P" 
+                                 to change inventory prices, or type "E" to 
+                                 manage store expenses. When finished, type "S"
+                                 to run store simulation. 
+                                 ''')
+            if manage_store.upper() == 'B':
+            #print to user to ask if they want to buy more inventory, and call
+                #buy_inventory method. we may need to add to the buy_inventory or
+                #add another method that allows the player to select which items
+                #they want to buy. 
+                continue
+            
+            if manage_store.upper() == 'P':
+            #print to user to ask if they want to change inventory prices, and
+                #call set_prices method. we may need to add to the set_prices
+                #method or add a new method to allow the player to select which 
+                # items they want to change the price of.
+                continue
+            
+            if manage_store.upper() == 'P':
+            #print to user to ask if they want to manage store expenses. If yes,
+                #then go to manage_expenses method.
+                continue
+                
+            if manage_store.upper() == 'S':
+                break
+        
+        #run a simulation of customers buying items in the store for a day
+        self.store = self.simulate_day(self.store)
+        
+        #increase the day variable
+        day += 1
+        
+        return self.store
+                
+            
+        
+        
+        
+        
     
     def simulate_day(self, store):
         """Runs the customer purchasing simulation activities for one 
