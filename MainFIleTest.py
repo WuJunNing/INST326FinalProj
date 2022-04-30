@@ -255,27 +255,28 @@ class GameState():
             print(f'''Sorry, you lost the game. You only made 
                   {self.store.profit} in 14 days.''')
             return
-            
-            
-                
-            
-            
-            
-        
-       
+              
     
     def read_stock(self, store):
         ''' reads a file that determines the wholesale stock available. 
-        uses with statements and regex
+        opens the file using a with statement and reads with regex.
+        Args:
+            store(Store): a store object.
+        Side effects:
+            adds the wholesale stock names and prices into the
+            wholesale_stock dictionary, with the item names as the
+            keys and the prices as the values.
         '''
         with open("storestock.txt", "r", encoding = "utf-8") as f:
-            #regular expression goes here
-            expr = ()
+            expr = (r"""(?gm)
+                    ^
+                    (?:(?P<item>[a-z]+)*\s)
+                    (?P<price>\d*)""")
             for line in f:
                 stock_item = re.search(expr, line)
                 if stock_item:
-                    stockname = stock_item.group()
-                    stockprice = stock_item.group()
+                    stockname = stock_item.group("item")
+                    stockprice = stock_item.group("price")
                     self.wholesale_stock[stockname] = stockprice
     
     def run_day(self,store):
@@ -332,12 +333,7 @@ class GameState():
         day += 1
         
         return self.store
-                
-            
-        
-        
-        
-        
+                   
     
     def simulate_day(self, store):
         """Runs the customer purchasing simulation activities for one 
