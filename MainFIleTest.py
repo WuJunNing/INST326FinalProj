@@ -268,16 +268,24 @@ class GameState():
             wholesale_stock dictionary, with the item names as the
             keys and the prices as the values.
         '''
+        #opens the file of wholesale items and their prices
         with open("storestock.txt", "r", encoding = "utf-8") as f:
+            #sets the regular expression to be used
             expr = (r"""(?gm)
                     ^
                     (?:(?P<item>[a-z]+)*\s)
                     (?P<price>\d*)""")
+            #iterates over each line in the document
             for line in f:
+                #uses regex to search for matches
                 stock_item = re.search(expr, line)
+                #if there is a match
                 if stock_item:
+                    #sets item name and price based on regex group name
                     stockname = stock_item.group("item")
                     stockprice = stock_item.group("price")
+                    #adds item and price to dictionary
+                    #with item name as the key and price as the value
                     self.wholesale_stock[stockname] = stockprice
     
     def run_day(self,store):
