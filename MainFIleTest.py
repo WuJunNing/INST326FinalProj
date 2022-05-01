@@ -195,11 +195,12 @@ class GameState():
         store (Store): the Store object that the simulation will run on.
     """
     
-    def __init__(self, start_rent, max_inv, products):
+    def __init__(self, funds, max_inv, products):
         """Initializes the GameState object attributes and establishes the 
         stock avaliable to purchase during the simulation.
         
         Args:
+            funds (int): the starting funds for the player
             products (string): a file path to a document of the items available
             for the player to purchase for their store.
             
@@ -207,7 +208,7 @@ class GameState():
             Initializes the attributes day, store, and wholesale_stock.
         """
         #day is set to 1 because the day counter increases at the end of 
-        # each day
+        # each day in the run_day method
         self.day = 1
         #create store object
         self.store = Store(start_rent, max_inv)
@@ -298,12 +299,21 @@ class GameState():
         #print the store status to the player
         self.store_status(self.store)
         
+        #acceptable characters to input
+        manage_options = ['B', 'b', 'P', 'p','E', 'e', 'S', 's']
+        
         while True:
             manage_store = input(f'''Type "B" to buy more inventory, type "P" 
                                  to change inventory prices, or type "E" to 
                                  manage store expenses. When finished, type "S"
                                  to run store simulation. 
                                  ''')
+            #if player types in an option that is not acceptable
+            if manage_store not in manage_options:
+                print('''f{manage_store} is not one of the options please 
+                      choose one of the following options''')
+                continue
+                
             if manage_store.upper() == 'B':
             #print to user to ask if they want to buy more inventory, and call
                 #buy_inventory method. we may need to add to the buy_inventory or
@@ -318,7 +328,7 @@ class GameState():
                 # items they want to change the price of.
                 continue
             
-            if manage_store.upper() == 'P':
+            if manage_store.upper() == 'E':
             #print to user to ask if they want to manage store expenses. If yes,
                 #then go to manage_expenses method.
                 continue
