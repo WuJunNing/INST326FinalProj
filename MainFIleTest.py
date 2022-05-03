@@ -296,11 +296,8 @@ def main(name, employees):
     print(name)
     print(employees)
     #BASE CODE FOR THE PYPLOT DISPLAYING STORE PERFORMANCE
-    testPlot = pd.DataFrame({'Day of Simulation':[1,2,3,4],'Store Finance':[1000, 500, 200, 0]})
-    testPlotVisual = testPlot.plot.line()
-    print(testPlotVisual)
     PDSHOW.plot([1,2,3,4],[1000,500,200,0])
-    PDSHOW.xlabel("Days")
+    PDSHOW.xlabel("Simulation Days")
     PDSHOW.ylabel("Store Finance")
     PDSHOW.title("TESTING GRAPH AS DISPLAY")
     PDSHOW.show()
