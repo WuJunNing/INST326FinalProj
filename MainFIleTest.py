@@ -1,7 +1,9 @@
 from argparse import ArgumentParser
+from cgi import test
 import random
 import pandas as pd
 import sys
+import matplotlib.pyplot as PDSHOW
 
 placeHolderItems = {"Milk": 3.30, "Meat": 5.00, "Cereal":4.00}
 class Employee():
@@ -67,25 +69,6 @@ class Store():
         employeeList = pd.read_excel(csvFile)
         
 
-
-class Store():
-    def __init__(self, start_rent, max_inv):
-        self.profit = 0
-        self.money = 1000
-        self.inv = {}
-        self.prices = {}
-        self.rent = start_rent
-        self.max_inv = max_inv
-        
-    def buy_inventory(self, wholesale_stock):
-        pass
-    
-    def set_prices(self):
-        pass
-    
-    def manage_expenses(self):
-        pass
-    
 class GameState():
     """A class that can run a full store simluation game.
     
@@ -305,11 +288,23 @@ class GameState():
         print('''Here is an overview of your current store inventory:''')
         #print each item using a list comprehension
         [print(f'''Item: {inv_item}, Price: {self.inv[inv_item]}''') for inv_item in self.store.inv]
-        
+
+
+
 def main(name, employees):
     #THIS IS THE MAIN FUNCTION THAT WILL BE CALLING ALL THE CLASSES, FUNCTIONS, AND ESSENTIALLY RUNNING THE GAME
     print(name)
     print(employees)
+    #BASE CODE FOR THE PYPLOT DISPLAYING STORE PERFORMANCE
+    testPlot = pd.DataFrame({'Day of Simulation':[1,2,3,4],'Store Finance':[1000, 500, 200, 0]})
+    testPlotVisual = testPlot.plot.line()
+    print(testPlotVisual)
+    PDSHOW.plot([1,2,3,4],[1000,500,200,0])
+    PDSHOW.xlabel("Days")
+    PDSHOW.ylabel("Store Finance")
+    PDSHOW.title("TESTING GRAPH AS DISPLAY")
+    PDSHOW.show()
+    #_______________________________________________________________
     game = GameState()
     game.run_game()
         
@@ -343,3 +338,4 @@ def parse_args(arglist):
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
     main(args.StoreName, args.EmployeeList)
+
