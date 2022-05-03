@@ -310,6 +310,8 @@ def main(name, employees):
     #THIS IS THE MAIN FUNCTION THAT WILL BE CALLING ALL THE CLASSES, FUNCTIONS, AND ESSENTIALLY RUNNING THE GAME
     print(name)
     print(employees)
+    game = GameState()
+    game.run_game()
         
 
 #types of days
