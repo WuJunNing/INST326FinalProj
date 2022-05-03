@@ -47,27 +47,6 @@ class Player():
             Initializes the attributes name and score'''
         self.name = name
         self.score = score
-        
-class Store():
-    def __init__(self,name, Funds, inv):
-        self.name = name
-        self.funds = Funds
-        self.inventory = inv
-    def buyInventory(self, InvItem, amountPurchased):
-        stockBuying = placeHolderItems.get(InvItem) * amountPurchased
-        confirmPurchase = input(f"Your currently purchasing {amountPurchased} \
-                                of {InvItem}, this will cost you {stockBuying}\
-                                , which will reduce store funds to \
-                                {self.funds - stockBuying} (Y/N)")
-        if confirmPurchase.upper() == "Y":
-            print(f"purchased {amountPurchased} {InvItem}")
-            return amountPurchased
-        else:
-            print("Purchased declined")
-        pass
-    def hireEmployee(csvFile = "EmployeeTest.xlsx"):
-        employeeList = pd.read_excel(csvFile)
-        
 
 class GameState():
     """A class that can run a full store simluation game.
