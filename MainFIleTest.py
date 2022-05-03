@@ -25,16 +25,7 @@ class Employee():
         self.name = name
         self.salary = salary
         self.schedule = schedule
-        
-class Boss(Employee):
-    ''' Creates the class Boss, a subclass of Employee
-    '''
-class Manager(Employee):
-    ''' Creates the class Manager, a subclass of Employee
-    '''
-class Worker(Employee):
-    '''Creates the class Worker, a subclass of Employee
-    '''
+
     
 class Player():
     '''Creates the Player class.
@@ -79,7 +70,6 @@ class Store():
         self.money = 1000
         self.inv = {}
         self.prices = {}
-        #self.salary = salary
         self.rent = start_rent
         self.max_inv = max_inv
         
