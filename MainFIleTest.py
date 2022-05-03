@@ -54,37 +54,11 @@ class Player():
         self.score = score
         
 class Store():
-    ''' Creates the Store class.
-    Attributes:
-        name(str): the name of the player
-        funds(int): the funds available for the player
-        size():
-        inventory(): the inventory of the player
-    '''
-    def __init__(self,name, Funds, size, inv):
-        ''' Initializes the attributes for the Store object.
-        Args:
-            name (str): the name of the player
-            funds (int): the funds available to the player
-            size():
-            inv(): the current inventory of the player's store
-        Side effects:
-            sets the values of the attributes of the Store object
-        '''
+    def __init__(self,name, Funds, inv):
         self.name = name
         self.funds = Funds
-        self.size = size
         self.inventory = inv
     def buyInventory(self, InvItem, amountPurchased):
-        '''Purchases items for the player's inventory.
-        Args:
-            InvItem(str): the item being purchases
-            amountPurchased(int): the amount of the item being purchased
-        Returns:
-            amountPurchased(int): the amount of the item purchased
-        Side effects:
-            prints message to console for player
-        '''
         stockBuying = placeHolderItems.get(InvItem) * amountPurchased
         confirmPurchase = input(f"Your currently purchasing {amountPurchased} \
                                 of {InvItem}, this will cost you {stockBuying}\
@@ -95,47 +69,12 @@ class Store():
             return amountPurchased
         else:
             print("Purchased declined")
-    def setPrices(self, InventorySelection, newPrice):
-        ''' Sets the prices of the items in the player's inventory.
-        Args:
-            InventorySelection(str): the item in the inventory
-            newPrice(int): the new price that is being set
-        Side effects:
-            prints message for player to console
-        '''
-        print("Current Store prices for inventory items")
-        [print("lineItem\n") for lineItem in placeHolderItems]
-        changeprice1 = input("Which item would you like to change to?")
-        NewPrice = placeHolderItems.get(changeprice1) 
-        placeHolderItems[f"{InventorySelection}"] = NewPrice
-        placeHoldCont = input(f"{InventorySelection} New Price Set: {newPrice}")
+        pass
+    def hireEmployee()
 
-
-def mainGame(optionsList = []):
-    ''' Shows the options for the player to choose from for each turn
-    Args:
-        optionsList(list): the list of selections the player
-        can choose from
-    Side effects:
-        prints the different choices the player can make
-    '''
-    print("Main Game Menu")
-    [print(optionsList.index(item)," ", item) for item in optionsList]
-    
-print mainGame([])
 
 class Store():
     def __init__(self, start_rent, max_inv):
-        """Initializes the attributes for the Store class.
-        
-        Args: 
-            start_rent (int): the amount of rent for the store.
-            max_inv (int): the maximum number of items that can be in 
-                the player's inventory.
-        
-        Side effects:
-            Initializes the attributes profit, money, inv, prices, rent, max_inv.
-        """
         self.profit = 0
         self.money = 1000
         self.inv = {}
@@ -145,42 +84,12 @@ class Store():
         self.max_inv = max_inv
         
     def buy_inventory(self, wholesale_stock):
-        """
-        Allows the player to buy items for their store inventory from a  
-            wholesale inventory. 
-        
-        Args: 
-            wholesale_stock (dict {string:float}): the items available
-            for the player to purchase for their store. Structure of the 
-            dictionary is {"item name":<unit price>}. 
-        
-        Returns:
-            inv (dict {string:int}): a dictionary of the items a player 
-                has in their store inventory. Structure of the dictionary
-                is {"item name":<quantity of item in inventory>}.
-        
-        Side effects:
-            Can modify the attributes money and inv.  
-        """
         pass
     
     def set_prices(self):
-        """Allows the player to set the prices for items in their store.
-        
-        Side effects: 
-            Prints instructions and information to the terminal for the player
-                to set prices interactively.
-            Can modify the prices attribute. 
-        """
         pass
     
     def manage_expenses(self):
-        """Allows the user to manage employee salaries and view store rent. 
-        
-        Side effects:
-            Prints instructions and information to the terminal for the player
-                to manage employee salaries interactively.
-        """
         pass
     
 class GameState():
