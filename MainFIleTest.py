@@ -1,5 +1,7 @@
+from argparse import ArgumentParser
 import random
 import pandas as pd
+import sys
 
 placeHolderItems = {"Milk": 3.30, "Meat": 5.00, "Cereal":4.00}
 class Employee():
@@ -61,7 +63,9 @@ class Store():
         else:
             print("Purchased declined")
         pass
-    def hireEmployee()
+    def hireEmployee(csvFile = "EmployeeTest.xlsx"):
+        employeeList = pd.read_excel(csvFile)
+        
 
 
 class Store():
@@ -302,7 +306,10 @@ class GameState():
         #print each item using a list comprehension
         [print(f'''Item: {inv_item}, Price: {self.inv[inv_item]}''') for inv_item in self.store.inv]
         
-        
+def main(name, employees):
+    #THIS IS THE MAIN FUNCTION THAT WILL BE CALLING ALL THE CLASSES, FUNCTIONS, AND ESSENTIALLY RUNNING THE GAME
+    print(name)
+    print(employees)
         
 
 #types of days
@@ -314,5 +321,23 @@ def event():
     events = []
     dayType = random.randint(0, len(events))
   
+  
+def parse_args(arglist):
+    """A function to process the command line arguments
+
+    Args:
+        arglist (str): The first Argument is referring to the Store name that the player wants to use
+        arglist (filePath) : The second argument is the filepath for the employees excel sheet
+
+    Returns:
+        _type_: _description_
+    """
+    parser = ArgumentParser()
+    #For each parser.add_argument, there is a unique arugment it will be handling when the program is called
+    parser.add_argument("StoreName", help="This will be the name of the store during the game")
+    parser.add_argument("EmployeeList", help='File containing employee data')
+    return parser.parse_args(arglist)
+
 if __name__ == "__main__":
-    pass
+    args = parse_args(sys.argv[1:])
+    main(args.StoreName, args.EmployeeList)
