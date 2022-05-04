@@ -1,0 +1,14 @@
+apple 1
+banana 3
+cabbage 10
+mango 3
+milk 4
+bacon 2
+cereal 5
+chives 4
+bread 7
+yogurt 4
+papaya 2
+strawberries 10
+cheese 5
+lettuce 3
