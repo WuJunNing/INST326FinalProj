@@ -429,7 +429,30 @@ class GameState():
             Side Effects:
                 Can modify the attributes profit and money.
             """
-        pass
+        customercount = random.randint(1,30)
+        # for each customer
+        for person in range(len(customercount)):
+            itemslist = list(self.wholesale_stock.keys())
+            itemslist[random.randint(1,)]
+            # gets list of items
+            itemslist = list(self.inv.keys())
+            # gets a random int for the purchase and buys what is at
+            # that index
+            purchase = itemslist[random.randint(1,15)]
+            # gets the current amount of the item
+            currentamount = self.inv.get(purchase)
+            # subtracts the purchase from the total
+            self.inv[purchase] = currentamount - 1
+            # updates profit
+            self.profit += self.prices.get(purchase)
+        # if it is a rent payment day, pays the rent
+        if pay_rent == True:
+            self.money -= self.rent
+        # if it is an employee payment day, pays the employee
+        if pay_salary == True:
+            self.money -= self.salary
+
+        return self.store
     
     def store_status(self, store):
         """Prints the properties of the store to the player.
