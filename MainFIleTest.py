@@ -377,30 +377,35 @@ class GameState():
         """
         #print the store status to the player
         self.store_status(self.store)
-        
+
+        #acceptable characters to input
+        manage_options = ['B', 'b','E', 'e', 'S', 's']
+
         while True:
-            manage_store = input(f'''Type "B" to buy more inventory, type "P" 
-                                 to change inventory prices, or type "E" to 
-                                 manage store expenses. When finished, type "S"
-                                 to run store simulation. 
-                                 ''')
+            manage_store = input('''Type "B" to buy more inventory or type 
+                                 "E" to manage store expenses. When finished, 
+                                 type "S" to run store simulation.''')
+            
+            #if player types in an option that is not acceptable
+            if manage_store not in manage_options:
+                print('''f{manage_store} is not one of the options. Please 
+                      choose one of the following options''')
+                continue
+
             if manage_store.upper() == 'B':
+                #print the stock available
+                #suggestion: somehow in the inventory dictionary, we have the
+                    #number of items in the dic
             #print to user to ask if they want to buy more inventory, and call
                 #buy_inventory method. we may need to add to the buy_inventory or
                 #add another method that allows the player to select which items
                 #they want to buy. 
                 continue
             
-            if manage_store.upper() == 'P':
-            #print to user to ask if they want to change inventory prices, and
-                #call set_prices method. we may need to add to the set_prices
-                #method or add a new method to allow the player to select which 
-                # items they want to change the price of.
-                continue
-            
-            if manage_store.upper() == 'P':
+            if manage_store.upper() == 'E':
             #print to user to ask if they want to manage store expenses. If yes,
                 #then go to manage_expenses method.
+                self.store.manage_expenses()
                 continue
                 
             if manage_store.upper() == 'S':
@@ -463,8 +468,18 @@ class GameState():
         Side effects:
             Prints the store propeties to the terminal. 
         """
-        # use __str__ here
-        pass
+        print(f'''Welcome to day {self.day}. Here is the status of your 
+              store:''')
+
+        #print finances
+        print(f'''Your profit so far is ${self.store.profit}''')
+        print(f'''Your current funds are ${self.store.funds}''')
+
+        #print inventory
+        print('''Here is an overview of your current store inventory:''')
+        #print each item using a list comprehension
+        [print(f'''Item: {inv_item}, Price: {self.inv[inv_item]}''') for inv_item in self.store.inv]
+        
 
 #types of days
 def event():
