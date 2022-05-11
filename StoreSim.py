@@ -23,11 +23,12 @@ def read_stock(filename):
         '''
         #opens the file
         with open(filename, "r", encoding = "utf-8") as f:
-            expr = (r"""(?dm)
-                    ^
-                    (?:(?P<item>[a-z]+)*\s)
-                    (?P<price>\d*)""")
-            match = re.search(expr,line)
+            for line in f:
+                expr = (r"""(?dm)
+                        ^
+                        (?:(?P<item>[a-z]+)*\s)
+                        (?P<price>\d*)""")
+                match = re.search(expr,line)
             if match:
                     # puts item name and price into list, which will be the key
                     # default inventory amount is 50, this is the value
