@@ -21,7 +21,7 @@ def read_stock(filename):
             wholesale_stock dictionary, with the item names as the
             keys and the prices as the values.
         '''
-        with open("storestock.txt", "r", encoding = "utf-8") as f:
+        with open(filename, "r", encoding = "utf-8") as f:
             inventory = {}
             for line in f:
                 expr = (r"""(?mx)
