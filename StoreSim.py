@@ -64,11 +64,7 @@ def run_game(StockFilePath):
                   {profit} in 5 days.''')
         
         
-<<<<<<< HEAD
- def run_day(day, funds):
-=======
-def run_day():
->>>>>>> e684e0bbeae4c7c1a0dd9db744f587161d792121
+def run_day(day, funds):
         """Prints store status, calls the store simulation method, then
         increases the day.
         
