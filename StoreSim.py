@@ -23,7 +23,7 @@ def read_stock(filename):
         '''
         inventory = {}
         with open(filename, "r", encoding = "utf-8") as f:
-            expr = (r"""(?gm)
+            expr = (r"""(?dm)
                     ^
                     (?:(?P<item>[a-z]+)*\s)
                     (?P<price>\d*)""")
