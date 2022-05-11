@@ -23,21 +23,18 @@ def read_stock(filename):
         '''
         #opens the file
         with open(filename, "r", encoding = "utf-8") as f:
-            inventory = {}
-            # uses regex to read file contents
-            for line in f:
-                expr = (r"""(?mx)
+            expr = (r"""(?dm)
                     ^
                     (?:(?P<item>[a-z]+)*\s)
                     (?P<price>\d*)""")
-                match = re.search(expr,line)
-                if match:
+            match = re.search(expr,line)
+            if match:
                     # puts item name and price into list, which will be the key
                     # default inventory amount is 50, this is the value
-                    itemname = match.group("item")
-                    itemprice = match.group("price")
-                    itemlisting = [itemname, itemprice]
-                    inventory[itemlisting] = 50            
+                itemname = match.group("item")
+                itemprice = match.group("price")
+                itemlisting = [itemname, itemprice]
+                inventory[itemlisting] = 50            
     
 def run_game(StockFilePath):
         profit = 0
