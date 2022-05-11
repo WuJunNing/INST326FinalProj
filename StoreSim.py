@@ -116,9 +116,9 @@ def simulate_day(inventory):
     for person in range(customercount):
         itemindex = random.randint(1, 15)
         purchase = itemslist[itemindex]
-        price = itemslist[itemindex[1]]
+        price = purchase[1]
         currentamount = inventory.get(purchase)
-        inventory[purchase] = currentamount - 1
+        inventory[itemindex] = currentamount - 1
         profit += price
 
     
