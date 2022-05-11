@@ -34,6 +34,7 @@ def read_stock(filename):
                     stockprice = stock_item.group("price")
                     inventory[itemname] = itemprice
                     
+                    
     
 def run_game(StockFilePath):
     
