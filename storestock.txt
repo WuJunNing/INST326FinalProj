@@ -12,3 +12,4 @@ papaya 2
 strawberries 10
 cheese 5
 lettuce 3
+sugar 2
