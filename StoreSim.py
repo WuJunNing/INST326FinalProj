@@ -35,6 +35,7 @@ def read_stock(filename):
                     inventory[itemname] = itemprice              
     
 def run_game(StockFilePath):
+        profit = 0
         dayCounter = 1
         fundsCounter = 1000
         """Runs a full simulation game, over a series of 
@@ -61,7 +62,7 @@ def run_game(StockFilePath):
                   {profit} in 5 days.''')
         
         
- def run_day():
+def run_day():
         """Prints store status, calls the store simulation method, then
         increases the day.
         
@@ -71,7 +72,7 @@ def run_game(StockFilePath):
             Can modifiy the day variable.
         """
         #give player store status
-        print(f'''Welcome to day {day}. Here is the status of your 
+        print(f'''Welcome to day {dayCounter}. Here is the status of your 
               store:''')
 
         #print finances
@@ -84,7 +85,7 @@ def run_game(StockFilePath):
         [print(f'''Item: {inv_item}, Price: {inventory[inv_item]}''') for inv_item in inventory]
 
         #simulation will now run
-        print(f'''The simulation for day{day} will now run''')
+        print(f'''The simulation for day{dayCounter} will now run''')
                 
         #run a simulation of customers buying items in the store for a day
         simulate_day()
