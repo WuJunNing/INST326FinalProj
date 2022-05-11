@@ -66,6 +66,38 @@ def run_game(StockFilePath):
             print(f'''Sorry, you lost the game. You only made 
                   {profit} in 5 days.''')
             return
+        
+ def run_day():
+        """Prints store status, calls the store simulation method, then
+        increases the day.
+        
+        Side effects: 
+            Prints information to the terminal for the player to 
+            see store status
+            Can modifiy the day variable.
+        """
+        #give player store status
+        print(f'''Welcome to day {day}. Here is the status of your 
+              store:''')
+
+        #print finances
+        print(f'''Your profit so far is ${profit}''')
+        print(f'''Your current funds are ${funds}''')
+
+        #print inventory
+        print('''Here is an overview of your current store inventory:''')
+        #print each item using a list comprehension
+        [print(f'''Item: {inv_item}, Price: {inventory[inv_item]}''') for inv_item in inventory]
+
+        #simulation will now run
+        print(f'''The simulation for day{day} will now run''')
+                
+        #run a simulation of customers buying items in the store for a day
+        simulate_day()
+        
+        #increase the day variable
+        day += 1
+
     
 def parse_args(arglist):
     parser = ArgumentParser()
