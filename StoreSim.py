@@ -1,6 +1,7 @@
 from argparse import ArgumentParser
 import sys
 import re
+import random
 
 #python .\StoreSim.py AAAA "EmployeeTest.xlsx" "storestock.txt"
 
@@ -95,7 +96,7 @@ def run_day(day, funds):
         
         #increase the day variable
         
-def simulate_day():
+#def simulate_day():
     
         
 
