@@ -32,9 +32,7 @@ def read_stock(filename):
                 if match:
                     itemname = match.group("item")
                     itemprice = match.group("price")
-                    inventory[itemname] = itemprice
-                    
-                    
+                    inventory[itemname] = itemprice              
     
 def run_game(StockFilePath):
         dayCounter = 1
