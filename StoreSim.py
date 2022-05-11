@@ -54,7 +54,7 @@ def run_game(StockFilePath):
         #continues looping and running the simulation until the player 
         #completes 5 days or runs out of money
         while dayCounter < 6 and fundsCounter > 0:
-            run_day(dayCounter)
+            run_day(dayCounter, fundsCounter)
         
         #return either a win message or a lose message after 14 days. 
         #we can edit the win condition but for now I put $500 in profit
