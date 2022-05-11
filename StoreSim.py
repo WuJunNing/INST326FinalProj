@@ -1,14 +1,14 @@
 from argparse import ArgumentParser
 import sys
 
-def main(storeName, EmployeeFilePath):
+def main(storeName, EmployeeFilePath, StockFilePath):
     print("SSSSSSSSSSSSS")
     print(storeName)
     print(EmployeeFilePath)
     #run the game
-    run_game()
+    run_game(StockFilePath)
 
-def read_stock(self, filename):
+def read_stock(filename):
         ''' reads a file that determines the wholesale stock available. 
         opens the file using a with statement and reads with regex.
         Args:
@@ -30,15 +30,16 @@ def read_stock(self, filename):
                     stockname = stock_item.group("item")
                     stockprice = stock_item.group("price")
                     inventory[itemname] = itemprice
+                    
     
-def run_game():
+def run_game(StockFilePath):
         """Runs a full simulation game, over a series of 
             game days.
                 
             Side effects: Prints the game result to the terminal. 
         """
         #populate inventory with the available stock
-        read_stock()
+        read_stock(StockFilePath)
         
         #continues looping and running the simulation until the player 
         #completes 5 days or runs out of money
@@ -66,8 +67,9 @@ def parse_args(arglist):
     parser = ArgumentParser()
     parser.add_argument("StoreName", help="Name of the store")
     parser.add_argument("EmployeeList", help = "Excel file of employees")
+    parser.add_argument("StockList", help = "The text file of the stock for the store")
     return parser.parse_args(arglist)    
 
 if __name__ == "__main__":
     args  = parse_args(sys.argv[1:])
-    main(args.StoreName, args.EmployeeList)
+    main(args.StoreName, args.EmployeeList, args.StockList)
