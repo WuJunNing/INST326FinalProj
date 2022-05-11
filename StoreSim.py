@@ -21,20 +21,27 @@ def read_stock(filename):
             wholesale_stock dictionary, with the item names as the
             keys and the prices as the values.
         '''
-        inventory = {}
+        #opens the file
         with open(filename, "r", encoding = "utf-8") as f:
+<<<<<<< HEAD
             expr = (r"""(?dm)
+=======
+            inventory = {}
+            # uses regex to read file contents
+            for line in f:
+                expr = (r"""(?mx)
+>>>>>>> e1672ab988145e20c171a5877ef6d1a695fbf654
                     ^
                     (?:(?P<item>[a-z]+)*\s)
                     (?P<price>\d*)""")
-            for line in f:
-                stock_item = re.search(expr, line)
-                if stock_item:
-                    itemname = stock_item.group("item")
-                    itemprice = stock_item.group("price")
-                    inventory[itemname] = itemprice
-                    
-                    
+                match = re.search(expr,line)
+                if match:
+                    # puts item name and price into list, which will be the key
+                    # default inventory amount is 50, this is the value
+                    itemname = match.group("item")
+                    itemprice = match.group("price")
+                    itemlisting = [itemname, itemprice]
+                    inventory[itemlisting] = 50            
     
 def run_game(StockFilePath):
         profit = 0
