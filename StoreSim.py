@@ -30,8 +30,8 @@ def read_stock(filename):
             for line in f:
                 stock_item = re.search(expr, line)
                 if stock_item:
-                    stockname = stock_item.group("item")
-                    stockprice = stock_item.group("price")
+                    itemname = stock_item.group("item")
+                    itemprice = stock_item.group("price")
                     inventory[itemname] = itemprice
                     
                     
