@@ -119,7 +119,7 @@ def simulate_day(inventory,profit):
         price = purchase[1]
         currentamount = inventory.get(purchase)
         inventory[itemindex] = currentamount - 1
-        profit += price
+        profit += int(price)
 
     
 def parse_args(arglist):
