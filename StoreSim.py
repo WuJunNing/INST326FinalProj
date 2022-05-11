@@ -13,31 +13,31 @@ def main(storeName, EmployeeFilePath, StockFilePath):
     run_game(StockFilePath)
 
 def read_stock(filename):
-        ''' reads a file that determines the wholesale stock available. 
-        opens the file using a with statement and reads with regex.
-        Args:
-            store(Store): a store object.
-        Side effects:
-            adds the wholesale stock names and prices into the
-            wholesale_stock dictionary, with the item names as the
-            keys and the prices as the values.
-        '''
-        #opens the file
-        with open(filename, "r", encoding = "utf-8") as f:
-            inventory = {}
-            for line in f:
-                expr = (r"""(?mx)
-                        ^
-                        (?:(?P<item>[a-z]+)*\s)
-                        (?P<price>\d*)""")
-                match = re.search(expr,line)
-                if match:
-                        # puts item name and price into list, which will be the key
-                        # default inventory amount is 50, this is the value
-                    itemname = match.group("item")
-                    itemprice = match.group("price")
-                    itemlisting = (itemname, itemprice)
-                    inventory[itemlisting] = 50            
+    ''' reads a file that sets the items, prices, and stock.
+    opens the file using a with statement and reads with regex.
+    Args:
+        store(Store): a store object.
+    Side effects:
+        creates inventory(dict), with keys being tuples of the
+        item name and price, and values being the stock amount.
+    '''
+    #opens the file
+    with open(filename, "r", encoding = "utf-8") as f:
+        inventory = {}
+        for line in f:
+            expr = (r"""(?mx)
+                    ^
+                    (?:(?P<item>[a-z]+)*\s)
+                    (?P<price>\d*)""")
+            match = re.search(expr,line)
+            if match:
+                    # puts item name and price into list, which will be the key
+                    # default inventory amount is 50, this is the value
+                itemname = match.group("item")
+                itemprice = match.group("price")
+                itemlisting = (itemname, itemprice)
+                inventory[itemlisting] = 50    
+    return inventory        
     
 def run_game(StockFilePath):
         profit = 0
@@ -98,10 +98,29 @@ def run_day(day, funds, profit, inventory):
         
         #increase the day variable
 
-'''def simulate_day():
-
+def simulate_day():
+    '''Runs the customer purchasing simulation activities for one 
+    game day. The purchasing simulation is mainly random but may be 
+    influenced by certain external events in the game.
+                
+    Args: 
+        store (Store): a Store object.
         
-'''
+    Returns: 
+        store (Store): a Store object. 
+    
+    Side Effects:
+        Can modify the attributes profit and money.
+    '''
+    customercount = random.randint(1,30)
+    itemslist = list(inventory.keys())
+    for person in range(len(customercount)):
+        purchase = itemslist[random.randint(1,15)]
+        price = itemslist[purchase][1]
+        currentamount = inventory.get(purchase)
+        inventory[purchase] = currentamount - 1
+        profit += price
+
     
 def parse_args(arglist):
     parser = ArgumentParser()
