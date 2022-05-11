@@ -7,6 +7,29 @@ def main(storeName, EmployeeFilePath):
     print(EmployeeFilePath)
     #run the game
     run_game()
+
+def read_stock(self, filename):
+        ''' reads a file that determines the wholesale stock available. 
+        opens the file using a with statement and reads with regex.
+        Args:
+            store(Store): a store object.
+        Side effects:
+            adds the wholesale stock names and prices into the
+            wholesale_stock dictionary, with the item names as the
+            keys and the prices as the values.
+        '''
+        inventory = {}
+        with open(filename, "r", encoding = "utf-8") as f:
+            expr = (r"""(?gm)
+                    ^
+                    (?:(?P<item>[a-z]+)*\s)
+                    (?P<price>\d*)""")
+            for line in f:
+                stock_item = re.search(expr, line)
+                if stock_item:
+                    stockname = stock_item.group("item")
+                    stockprice = stock_item.group("price")
+                    inventory[itemname] = itemprice
     
 def run_game():
         """Runs a full simulation game, over a series of 
