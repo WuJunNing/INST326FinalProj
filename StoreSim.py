@@ -54,7 +54,7 @@ def run_game(StockFilePath):
         #continues looping and running the simulation until the player 
         #completes 5 days or runs out of money
         while dayCounter < 6 and fundsCounter > 0:
-            run_day(dayCounter, fundsCounter)
+            run_day(dayCounter, fundsCounter, profit, inventory)
         
         #return either a win message or a lose message after 14 days. 
         #we can edit the win condition but for now I put $500 in profit
@@ -67,7 +67,7 @@ def run_game(StockFilePath):
                   {profit} in 5 days.''')
         
         
-def run_day(day, funds):
+def run_day(day, funds, profit, inventory):
         """Prints store status, calls the store simulation method, then
         increases the day.
         
@@ -77,7 +77,7 @@ def run_day(day, funds):
             Can modifiy the day variable.
         """
         #give player store status
-        print(f'''Welcome to day {dayCounter}. Here is the status of your 
+        print(f'''Welcome to day {day}. Here is the status of your 
               store:''')
 
         #print finances
@@ -87,10 +87,11 @@ def run_day(day, funds):
         #print inventory
         print('''Here is an overview of your current store inventory:''')
         #print each item using a list comprehension
+        print(inventory)
         [print(f'''Item: {inv_item[0]}, Price: {inv_item[1]}, Quantity: {inventory[inv_item]}''') for inv_item in inventory]
 
         #simulation will now run
-        print(f'''The simulation for day{dayCounter} will now run''')
+        print(f'''The simulation for day {day} will now run''')
                 
         #run a simulation of customers buying items in the store for a day
         simulate_day()
