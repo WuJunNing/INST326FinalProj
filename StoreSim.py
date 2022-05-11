@@ -2,6 +2,8 @@ from argparse import ArgumentParser
 import sys
 import re
 
+#python .\StoreSim.py AAAA "EmployeeTest.xlsx" "storestock.txt"
+
 def main(storeName, EmployeeFilePath, StockFilePath):
     print("SSSSSSSSSSSSS")
     print(storeName)
