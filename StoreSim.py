@@ -37,36 +37,31 @@ def read_stock(filename):
                     
     
 def run_game(StockFilePath):
-    
+        dayCounter = 1
+        fundsCounter = 1000
         """Runs a full simulation game, over a series of 
             game days.
                 
             Side effects: Prints the game result to the terminal. 
         """
         #populate inventory with the available stock
-        read_stock(StockFilePath)
+        inventory = read_stock(StockFilePath)
         
         #continues looping and running the simulation until the player 
         #completes 5 days or runs out of money
-        while day < 6:
-            #player loses if they run out of money
-            if funds == 0:
-                print(f'Sorry, you ran out of money after day {day - 1}')
-                return
-            
-            #run one day simulation
-            run_day()
+        while dayCounter < 6 and fundsCounter > 0:
+            run_day(dayCounter)
         
         #return either a win message or a lose message after 14 days. 
         #we can edit the win condition but for now I put $500 in profit
         if profit >= 500:
             print(f'''Congratulations, you won the game. You made
                   ${profit} in 5 days''')
-            return
+            
         else:
             print(f'''Sorry, you lost the game. You only made 
                   {profit} in 5 days.''')
-            return
+        
         
  def run_day():
         """Prints store status, calls the store simulation method, then
@@ -97,7 +92,7 @@ def run_game(StockFilePath):
         simulate_day()
         
         #increase the day variable
-        day += 1
+        
 
     
 def parse_args(arglist):
