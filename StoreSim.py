@@ -87,7 +87,6 @@ def run_day(day, funds, profit, inventory):
         #print inventory
         print('''Here is an overview of your current store inventory:''')
         #print each item using a list comprehension
-        print(inventory)
         [print(f'''Item: {inv_item[0]}, Price: {inv_item[1]}, Quantity: {inventory[inv_item]}''') for inv_item in inventory]
 
         #simulation will now run
