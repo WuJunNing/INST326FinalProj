@@ -36,7 +36,7 @@ def read_stock(filename):
                         # default inventory amount is 50, this is the value
                     itemname = match.group("item")
                     itemprice = match.group("price")
-                    itemlisting = [itemname, itemprice]
+                    itemlisting = (itemname, itemprice)
                     inventory[itemlisting] = 50            
     
 def run_game(StockFilePath):
