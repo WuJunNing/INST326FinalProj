@@ -93,11 +93,11 @@ def run_day(day, funds, profit, inventory):
         print(f'''The simulation for day {day} will now run''')
                 
         #run a simulation of customers buying items in the store for a day
-        simulate_day(inventory)
+        simulate_day(inventory,profit)
         
         #increase the day variable
 
-def simulate_day(inventory):
+def simulate_day(inventory,profit):
     '''Runs the customer purchasing simulation activities for one 
     game day. The purchasing simulation is mainly random but may be 
     influenced by certain external events in the game.
