@@ -94,6 +94,9 @@ def run_day(day, funds):
         
         #increase the day variable
         
+def simulate_day():
+    
+        
 
     
 def parse_args(arglist):
