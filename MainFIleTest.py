@@ -438,7 +438,7 @@ class GameState():
         # for each customer
         for person in range(len(customercount)):
             itemslist = list(self.wholesale_stock.keys())
-            itemslist[random.randint(1,)]
+            itemslist[random.randint(1,30)]
             # gets list of items
             itemslist = list(self.inv.keys())
             # gets a random int for the purchase and buys what is at
