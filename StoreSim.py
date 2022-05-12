@@ -72,7 +72,7 @@ def run_game(StockFilePath):
             
         else:
             print(f'''Sorry, you lost the game. You only made 
-                  {profit} in 5 days.''')
+                  ${profit} in 5 days.''')
         
         
 def run_day(day, funds, profit, inventory):
@@ -100,7 +100,7 @@ def run_day(day, funds, profit, inventory):
         itemslist = list(inventory)
         while itemindex < 15:
             item = itemslist[itemindex]
-            print(f'Item: {item[0]}, Price: {item[1]}, Quantity: {inventory[itemslist[itemindex]]}')
+            print(f'Item: {item[0]}, Price: ${item[1]}, Quantity: {inventory[itemslist[itemindex]]}')
             itemindex += 1
             
         
