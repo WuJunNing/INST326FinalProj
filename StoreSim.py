@@ -135,6 +135,7 @@ def simulate_day(inventory,profit):
         Can modify the attributes profit and money.
     '''
     customercount = random.randint(0,29)
+    print(f"{customercount} customer(s) came to the store today.")
     #customercount += employees * 15
     itemslist = list(inventory)
     for person in range(customercount):
@@ -143,6 +144,8 @@ def simulate_day(inventory,profit):
         print(f'item is {purchase[0]}')
         price = purchase[1]
         print(f'price is {price}')
+        if inventory.get(purchase) == 0:
+            continue
         currentamount = inventory.get(purchase)
         print(f'currentamount is {currentamount}')
         inventory[itemindex] = currentamount
