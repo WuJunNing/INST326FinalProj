@@ -123,6 +123,7 @@ def simulate_day(inventory,profit):
         Can modify the attributes profit and money.
     '''
     customercount = random.randint(0,29)
+    #customercount += employees * 15
     itemslist = list(inventory)
     for person in range(customercount):
         itemindex = random.randint(0, 14)
@@ -137,9 +138,9 @@ def simulate_day(inventory,profit):
         print(f'new amount is {newamount}')
         profit += int(price)
         print(f"profit is {profit}")
-        print(f"""customer {person + 1} bought 1 {purchase[0]} for ${price}.\
-            the previous amount was {currentamount}. the new amount is {newamount}. \
-                profit is now ${profit}.""")
+        print(f"""customer {person + 1} bought 1 {purchase[0]} for ${price}.
+the previous amount was {currentamount}. the new amount is {newamount}.
+profit is now ${profit}.""")
     return inventory, profit
     
 def parse_args(arglist):
