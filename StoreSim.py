@@ -133,8 +133,8 @@ def simulate_day(inventory,profit):
         currentamount = inventory.get(purchase)
         print(f'currentamount is {currentamount}')
         inventory[itemindex] = currentamount
-        inventory[itemslist[itemindex]] = currentamount - 1
-        print(f'new amount is {currentamount}')
+        newamount = inventory[itemslist[itemindex]] = currentamount - 1
+        print(f'new amount is {newamount}')
         profit += int(price)
         print(f"profit is {profit}")
     return inventory, profit
