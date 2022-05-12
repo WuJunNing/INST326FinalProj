@@ -93,7 +93,7 @@ def run_day(day, funds, profit, inventory):
         print(f'''The simulation for day {day} will now run''')
                 
         #run a simulation of customers buying items in the store for a day
-        simulate_day(inventory,profit)
+        inventory, profit = simulate_day(inventory,profit)
         
         #increase the day variable
         day += 1
@@ -122,7 +122,7 @@ def simulate_day(inventory,profit):
         currentamount = inventory.get(purchase)
         inventory[itemindex] = currentamount - 1
         profit += int(price)
-
+    return inventory, profit
     
 def parse_args(arglist):
     parser = ArgumentParser()
