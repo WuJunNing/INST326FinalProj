@@ -137,8 +137,7 @@ def simulate_day(inventory,profit):
         print(f'new amount is {newamount}')
         profit += int(price)
         print(f"profit is {profit}")
-        print(f"{customercount + 1} bought 1 {purchase[0]} for {price}. \
-            profit is now {profit}.")
+        print(f"customer {person} bought 1 {purchase[0]} for ${price}. profit is now {profit}.")
     return inventory, profit
     
 def parse_args(arglist):
