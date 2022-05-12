@@ -113,7 +113,8 @@ def run_day(day, funds, profit, inventory):
         print(f'''The simulation for day {day} will now run''')
                 
         #run a simulation of customers buying items in the store for a day
-        inventory, profit = simulate_day(inventory,profit)
+        inventory, sim_profit = simulate_day(inventory,profit)
+        profit += sim_profit
         funds += profit
         
         #increase the day variable
