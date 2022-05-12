@@ -72,7 +72,7 @@ def run_game(StockFilePath):
             
         else:
             print(f'''Sorry, you lost the game. You only made 
-                  {profit} in 5 days.''')
+                  ${profit} in 5 days.''')
         
         
 def run_day(day, funds, profit, inventory):
@@ -94,8 +94,20 @@ def run_day(day, funds, profit, inventory):
 
         #print inventory
         print('''Here is an overview of your current store inventory:''')
-        #print each item using a list comprehension
-        [print(f'''Item: {inv_item[0]}, Price: {inv_item[1]}, Quantity: {inventory[inv_item]}''') for inv_item in inventory]
+        
+        #print each item 
+        itemindex = 0
+        itemslist = list(inventory)
+        while itemindex < 15:
+            item = itemslist[itemindex]
+            print(f'Item: {item[0]}, Price: ${item[1]}, Quantity: {inventory[itemslist[itemindex]]}')
+            itemindex += 1
+            
+        
+        #print(f'Item: {inventory}')
+        
+        
+        #[print(f'''Item: {inv_item[0]}, Price: {inv_item[1]}, Quantity: {inventory[inv_item]}''') for inv_item in inventory]
 
         #simulation will now run
         print(f'''The simulation for day {day} will now run''')
