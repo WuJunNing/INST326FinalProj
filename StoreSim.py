@@ -40,6 +40,9 @@ def read_stock(filename):
     return inventory        
     
 def run_game(StockFilePath):
+        PROFITLISTFORGRAPHING = []
+        DAYCOUNTERLISTFORGRAPHINGX = []
+        FUNDCOUNTERLISTFORGRAPHINGY = []
         profit = 0
         dayCounter = 1
         fundsCounter = 1000
@@ -55,6 +58,11 @@ def run_game(StockFilePath):
         #completes 5 days or runs out of money
         while dayCounter < 6 and fundsCounter > 0:
             dayCounter, fundsCounter, profit, inventory = run_day(dayCounter, fundsCounter, profit, inventory)
+
+            DAYCOUNTERLISTFORGRAPHINGX.append(dayCounter)
+            FUNDCOUNTERLISTFORGRAPHINGY.append(fundsCounter)
+            
+            
         
         #return either a win message or a lose message after 14 days. 
         #we can edit the win condition but for now I put $500 in profit
