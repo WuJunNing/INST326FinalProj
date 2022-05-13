@@ -154,7 +154,7 @@ def simulate_day(inventory,profit):
         print(f'new amount is {newamount}')
         profit += int(price)
         print(f"profit is {profit}")
-        print(f"customer {person + 1} bought 1 {purchase[0]} for ${price}."
+        print(f"customer {person + 1} bought 1 {purchase[0]} for ${price}." 
                 f"the previous amount was {currentamount}. the new amount is {newamount}."
                 f"profit is now ${profit}.")
     return inventory, profit
