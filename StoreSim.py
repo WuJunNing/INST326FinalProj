@@ -3,8 +3,6 @@ import sys
 import re
 import random
 
-#python .\StoreSim.py AAAA "EmployeeTest.xlsx" "storestock.txt"
-#==========================================================
 class Employees():
     '''Creates the Employee class. 
     Attributes:
@@ -78,26 +76,7 @@ class Employees():
             self.happiness[newemp] = random.randint(70, 100)
             print(budgetAmount)
             return budgetAmount
-  
-   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#-=========================================================
 def main(storeName, EmployeeFilePath, StockFilePath):
     print("SSSSSSSSSSSSS")
     print(storeName)
