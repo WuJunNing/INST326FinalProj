@@ -229,18 +229,13 @@ def simulate_day(inventory,profit, employeeObj):
     for person in range(customercount):
         itemindex = random.randint(0, 14)
         purchase = itemslist[itemindex]
-        print(f'item is {purchase[0]}')
         price = purchase[1]
-        print(f'price is {price}')
         if inventory.get(purchase) == 0:
             continue
         currentamount = inventory.get(purchase)
-        print(f'currentamount is {currentamount}')
         inventory[itemindex] = currentamount
         newamount = inventory[itemslist[itemindex]] = currentamount - 1
-        print(f'new amount is {newamount}')
         profit += int(price)
-        print(f"profit is {profit}")
         print(f"customer {person + 1} bought 1 {purchase[0]} for ${price}." 
                 f"the previous amount was {currentamount}. the new amount is {newamount}."
                 f"profit is now ${profit}.")
