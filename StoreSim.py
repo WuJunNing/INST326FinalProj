@@ -153,18 +153,22 @@ def run_game(EmployeeFilePath, StockFilePath):
         #completes 5 days or runs out of money
         while dayCounter < 6 and fundsCounter > 0:
             dayCounter, fundsCounter, profit, inventory = run_day(dayCounter, fundsCounter, profit, inventory, employee)
-
+            
+              
             DAYCOUNTERLISTFORGRAPHINGX.append(dayCounter)
             FUNDCOUNTERLISTFORGRAPHINGY.append(fundsCounter)
-            
+        
             
         
-        #return either a win message or a lose message after 14 days. 
-        #we can edit the win condition but for now I put $500 in profit
+        #player loses if they run out of money
+        if fundsCounter <= 0:
+             print(f'''Sorry, you ran out of money after day {dayCounter - 1}''')
+             
+        #return either a win message or a lose message after 5 days. 
+        #win condition is currently $500 dollars profit
         if profit >= 500:
             print(f'''Congratulations, you won the game. You made
                   ${profit} in 5 days''')
-            
         else:
             print(f'''Sorry, you lost the game. You only made 
                   ${profit} in 5 days.''')
@@ -197,12 +201,6 @@ def run_day(day, funds, profit, inventory, employeeObj):
             item = itemslist[itemindex]
             print(f'Item: {item[0]}, Price: ${item[1]}, Quantity: {inventory[itemslist[itemindex]]}')
             itemindex += 1
-            
-        
-        #print(f'Item: {inventory}')
-        
-        
-        #[print(f'''Item: {inv_item[0]}, Price: {inv_item[1]}, Quantity: {inventory[inv_item]}''') for inv_item in inventory]
 
         #simulation will now run
         print(f'''The simulation for day {day} will now run''')
