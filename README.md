@@ -1,5 +1,6 @@
 
 An explanation of the purpose of each file in your repository
+storestock.txt contains all the items for the store, and their prices.
 
 Clear instructions on how to run your program from the command line
 
