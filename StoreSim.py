@@ -4,7 +4,26 @@ import re
 import random
 
 #python .\StoreSim.py AAAA "EmployeeTest.xlsx" "storestock.txt"
+#==========================================================
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#-=========================================================
 def main(storeName, EmployeeFilePath, StockFilePath):
     print("SSSSSSSSSSSSS")
     print(storeName)
