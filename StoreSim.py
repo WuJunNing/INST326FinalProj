@@ -224,7 +224,6 @@ def simulate_day(inventory,profit, employeeObj):
     maxcustomers = len(employeeObj.employee_ids) * 15
     customercount = random.randint(0,maxcustomers)
     print(f"{customercount} customer(s) came to the store today.")
-    #customercount += employees * 15
     itemslist = list(inventory)
     for person in range(customercount):
         itemindex = random.randint(0, 14)
@@ -236,9 +235,9 @@ def simulate_day(inventory,profit, employeeObj):
         inventory[itemindex] = currentamount
         newamount = inventory[itemslist[itemindex]] = currentamount - 1
         profit += int(price)
-        print(f"customer {person + 1} bought 1 {purchase[0]} for ${price}." 
-                f"the previous amount was {currentamount}. the new amount is {newamount}."
-                f"profit is now ${profit}.")
+        print(f"""customer {person + 1} bought 1 {purchase[0]} for ${price}. \
+                the previous amount was {currentamount}. the new amount is {newamount}. \
+                profit is now ${profit}.""")
     return inventory, profit
     
 def parse_args(arglist):
