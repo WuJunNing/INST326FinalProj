@@ -118,7 +118,8 @@ def run_game(EmployeeFilePath, StockFilePath):
         profit = 0
         dayCounter = 1
         fundsCounter = 1000
-        max_days = int(input("How many days do you want to try?"))
+        #simlation runs for 5 days. 
+        max_days = 5
         employee = Employees(int(input("How many employees do you want?")), max_days, EmployeeFilePath)
         """Runs a full simulation game, over a series of 
             game days.
@@ -130,7 +131,7 @@ def run_game(EmployeeFilePath, StockFilePath):
         
         #continues looping and running the simulation until the player 
         #completes 5 days or runs out of money
-        while dayCounter < 6 and fundsCounter > 0:
+        while dayCounter < max_days + 1 and fundsCounter > 0:
             dayCounter, fundsCounter, profit, inventory = run_day(dayCounter, fundsCounter, profit, inventory, employee)
             
               
