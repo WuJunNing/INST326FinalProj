@@ -1,8 +1,11 @@
 
 An explanation of the purpose of each file in your repository
-storestock.txt contains all the items for the store, and their prices.
+storestock.txt contains all the items for the store, and their prices to be read by the program.
+StoreSim.py is the main program, and what will run the store simulation.
+employeenames.txt contains a list of names of the employees to be read by the program.
 
 Clear instructions on how to run your program from the command line
+from the command line, enter Storesim.py, 
 
 Clear instructions on how to use your program and/or interpret the output of the program, as applicable
 
