@@ -3,6 +3,9 @@ import sys
 import re
 import random
 
+#MAIN PANDAS DATAFRAME TO KEEP TRACK OF ALL DATA DURING THE SIMULATION
+
+
 class Employees():
     '''Creates the Employee class. 
     Attributes:
