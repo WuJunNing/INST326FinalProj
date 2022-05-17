@@ -3,8 +3,9 @@ import sys
 import re
 import random
 
-#python .\StoreSim.py AAAA "EmployeeTest.xlsx" "storestock.txt"
-#==========================================================
+#MAIN PANDAS DATAFRAME TO KEEP TRACK OF ALL DATA DURING THE SIMULATION
+
+
 class Employees():
     '''Creates the Employee class. 
     Attributes:
@@ -78,26 +79,7 @@ class Employees():
             self.happiness[newemp] = random.randint(70, 100)
             print(budgetAmount)
             return budgetAmount
-  
-   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#-=========================================================
 def main(storeName, EmployeeFilePath, StockFilePath):
     print("SSSSSSSSSSSSS")
     print(storeName)
@@ -139,7 +121,8 @@ def run_game(EmployeeFilePath, StockFilePath):
         profit = 0
         dayCounter = 1
         fundsCounter = 1000
-        max_days = int(input("How many days do you want to try?"))
+        #simlation runs for 5 days. 
+        max_days = 5
         employee = Employees(int(input("How many employees do you want?")), max_days, EmployeeFilePath)
         """Runs a full simulation game, over a series of 
             game days.
@@ -151,20 +134,24 @@ def run_game(EmployeeFilePath, StockFilePath):
         
         #continues looping and running the simulation until the player 
         #completes 5 days or runs out of money
-        while dayCounter < 6 and fundsCounter > 0:
+        while dayCounter < max_days + 1 and fundsCounter > 0:
             dayCounter, fundsCounter, profit, inventory = run_day(dayCounter, fundsCounter, profit, inventory, employee)
-
+            
+              
             DAYCOUNTERLISTFORGRAPHINGX.append(dayCounter)
             FUNDCOUNTERLISTFORGRAPHINGY.append(fundsCounter)
-            
+        
             
         
-        #return either a win message or a lose message after 14 days. 
-        #we can edit the win condition but for now I put $500 in profit
+        #player loses if they run out of money
+        if fundsCounter <= 0:
+             print(f'''Sorry, you ran out of money after day {dayCounter - 1}''')
+             
+        #return either a win message or a lose message after 5 days. 
+        #win condition is currently $500 dollars profit
         if profit >= 500:
             print(f'''Congratulations, you won the game. You made
                   ${profit} in 5 days''')
-            
         else:
             print(f'''Sorry, you lost the game. You only made 
                   ${profit} in 5 days.''')
@@ -197,12 +184,6 @@ def run_day(day, funds, profit, inventory, employeeObj):
             item = itemslist[itemindex]
             print(f'Item: {item[0]}, Price: ${item[1]}, Quantity: {inventory[itemslist[itemindex]]}')
             itemindex += 1
-            
-        
-        #print(f'Item: {inventory}')
-        
-        
-        #[print(f'''Item: {inv_item[0]}, Price: {inv_item[1]}, Quantity: {inventory[inv_item]}''') for inv_item in inventory]
 
         #simulation will now run
         print(f'''The simulation for day {day} will now run''')
@@ -247,26 +228,20 @@ def simulate_day(inventory,profit, employeeObj):
     maxcustomers = len(employeeObj.employee_ids) * 15
     customercount = random.randint(0,maxcustomers)
     print(f"{customercount} customer(s) came to the store today.")
-    #customercount += employees * 15
     itemslist = list(inventory)
     for person in range(customercount):
         itemindex = random.randint(0, 14)
         purchase = itemslist[itemindex]
-        print(f'item is {purchase[0]}')
         price = purchase[1]
-        print(f'price is {price}')
         if inventory.get(purchase) == 0:
             continue
         currentamount = inventory.get(purchase)
-        print(f'currentamount is {currentamount}')
         inventory[itemindex] = currentamount
         newamount = inventory[itemslist[itemindex]] = currentamount - 1
-        print(f'new amount is {newamount}')
         profit += int(price)
-        print(f"profit is {profit}")
-        print(f"customer {person + 1} bought 1 {purchase[0]} for ${price}." 
-                f"the previous amount was {currentamount}. the new amount is {newamount}."
-                f"profit is now ${profit}.")
+        print(f"""customer {person + 1} bought 1 {purchase[0]} for ${price}. \
+                the previous amount was {currentamount}. the new amount is {newamount}. \
+                profit is now ${profit}.""")
     return inventory, profit
     
 def parse_args(arglist):
