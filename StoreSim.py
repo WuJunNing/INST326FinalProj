@@ -2,6 +2,8 @@ from argparse import ArgumentParser
 import sys
 import re
 import random
+import pandas as pd
+import matplotlib.pyplot as plt
 
 #MAIN PANDAS DATAFRAME TO KEEP TRACK OF ALL DATA DURING THE SIMULATION
 
@@ -80,12 +82,7 @@ class Employees():
             print(budgetAmount)
             return budgetAmount
 
-def main(storeName, EmployeeFilePath, StockFilePath):
-    print("SSSSSSSSSSSSS")
-    print(storeName)
-    print(EmployeeFilePath)
-    #run the game
-    run_game(EmployeeFilePath, StockFilePath)
+
 
 def read_stock(filename):
     ''' reads a file that sets the items, prices, and stock.
@@ -115,13 +112,14 @@ def read_stock(filename):
     return inventory        
     
 def run_game(EmployeeFilePath, StockFilePath):
-        PROFITLISTFORGRAPHING = []
-        DAYCOUNTERLISTFORGRAPHINGX = []
-        FUNDCOUNTERLISTFORGRAPHINGY = []
+        dfmainTracker = pd.DataFrame(columns = ['Type','Day', 'Counter'])
         profit = 0
         dayCounter = 1
         fundsCounter = 1000
-        #simlation runs for 5 days. 
+        dfmainTracker = dfmainTracker.append({'Type':1, 'Day':dayCounter, 'Counter':fundsCounter}, ignore_index=True)
+        dfmainTracker = dfmainTracker.append({'Type':2, 'Day':dayCounter, 'Counter':profit}, ignore_index=True)
+            
+       #simlation runs for 5 days. 
         max_days = 5
         employee = Employees(int(input("How many employees do you want?")), max_days, EmployeeFilePath)
         """Runs a full simulation game, over a series of 
@@ -129,6 +127,9 @@ def run_game(EmployeeFilePath, StockFilePath):
                 
             Side effects: Prints the game result to the terminal. 
         """
+        
+        
+        
         #populate inventory with the available stock
         inventory = read_stock(StockFilePath)
         
@@ -137,9 +138,9 @@ def run_game(EmployeeFilePath, StockFilePath):
         while dayCounter < max_days + 1 and fundsCounter > 0:
             dayCounter, fundsCounter, profit, inventory = run_day(dayCounter, fundsCounter, profit, inventory, employee)
             
+            
+            
               
-            DAYCOUNTERLISTFORGRAPHINGX.append(dayCounter)
-            FUNDCOUNTERLISTFORGRAPHINGY.append(fundsCounter)
         
             
         
@@ -155,6 +156,7 @@ def run_game(EmployeeFilePath, StockFilePath):
         else:
             print(f'''Sorry, you lost the game. You only made 
                   ${profit} in 5 days.''')
+        return dfmainTracker
         
         
 def run_day(day, funds, profit, inventory, employeeObj):
@@ -169,11 +171,10 @@ def run_day(day, funds, profit, inventory, employeeObj):
         #give player store status
         print(f'''Welcome to day {day}. Here is the status of your 
               store:''')
-
+        
         #print finances
         print(f'''Your profit so far is ${profit}''')
         print(f'''Your current funds are ${funds}''')
-
         #print inventory
         print('''Here is an overview of your current store inventory:''')
         
@@ -244,6 +245,11 @@ def simulate_day(inventory,profit, employeeObj):
                 profit is now ${profit}.""")
     return inventory, profit
     
+def main(storeName, EmployeeFilePath, StockFilePath):
+    
+
+
+    run_game(EmployeeFilePath, StockFilePath)
 def parse_args(arglist):
     parser = ArgumentParser()
     parser.add_argument("StoreName", help="Name of the store")
