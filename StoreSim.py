@@ -27,7 +27,7 @@ def GraphFilter(dataframe, userinput):
         plt.show()
     while input("Would you like to display another graph? (Y/N)").upper() != "N":
         GraphFilter(dataframe, input("Which graphs would you like to display?\n 1: Funds during the game\n 2: Profit During the game\n"))
-    print("Thank you for playing")  
+    
 
 def graphGenerator(dataframe):
     dataframe = dataframe[['Day', 'Counter']]
@@ -272,7 +272,7 @@ def simulate_day(inventory,profit, employeeObj):
     
 def main(EmployeeFilePath, StockFilePath):
     GraphFilter(run_game(EmployeeFilePath, StockFilePath), input("Which graphs would you like to display?\n 1: Funds during the game\n 2: Profit During the game\n"))
-    
+    print("Thank you for playing")  
     
 def parse_args(arglist):
     parser = ArgumentParser()
