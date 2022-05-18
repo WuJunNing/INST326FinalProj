@@ -18,7 +18,7 @@ def GraphFilter(dataframe, userinput):
         profitFiltered = dataframe[dataframe['Type']==2]
         graphGenerator(profitFiltered)
         plt.show()
-    while input("Would you like to display another graph?").upper() != "N":
+    while input("Would you like to display another graph? (Y/N)").upper() != "N":
         GraphFilter(dataframe, input("Which graphs would you like to display?\n 1: Funds during the game\n 2: Profit During the game\n"))
     print("Thank you for playing")
     
@@ -262,17 +262,16 @@ def simulate_day(inventory,profit, employeeObj):
                 profit is now ${profit}.""")
     return inventory, profit
     
-def main(storeName, EmployeeFilePath, StockFilePath):
+def main(EmployeeFilePath, StockFilePath):
     GraphFilter(run_game(EmployeeFilePath, StockFilePath), input("Which graphs would you like to display?\n 1: Funds during the game\n 2: Profit During the game\n"))
     
     
 def parse_args(arglist):
     parser = ArgumentParser()
-    parser.add_argument("StoreName", help="Name of the store")
     parser.add_argument("EmployeeList", help = "Excel file of employees")
     parser.add_argument("StockList", help = "The text file of the stock for the store")
     return parser.parse_args(arglist)    
 
 if __name__ == "__main__":
     args  = parse_args(sys.argv[1:])
-    main(args.StoreName, args.EmployeeList, args.StockList)
+    main(args.EmployeeList, args.StockList)
