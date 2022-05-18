@@ -17,3 +17,5 @@ Luis: pandas and data visualization.<br>
 Simon: employee class and its methods. optional parameters/keyword arguments and conditional expressions.<br>
 Ogenna: run_game and run_day functions. f-strings and sequence unpacking.<br>
 Yabing: read_stock and simulate_day functions. regular expressions and with statements.<br>
+
+## Citations
