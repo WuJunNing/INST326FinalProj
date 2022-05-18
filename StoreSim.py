@@ -10,6 +10,7 @@ import warnings
 warnings.simplefilter("ignore")
 #----------------------------------------------------------------
 
+yeses = ["YES", "Y"]
 def GraphFilter(dataframe, userinput):
     """Filters through the dataframe that is provided after the game is complete
 
@@ -96,34 +97,50 @@ class Employees():
         #val == 0 multiples a player salary and happiness and subtracts from funds a certain amount equal to the new salaries
         if val == 0:
             total_pay = 0
-            for name in self.employeenames:
-                if input(f"Would you like to pay {name} an extra salary? 2.0 multiplier on salary. Y = Yes, anything else = no") == "Y":
-                    print("Current salary: ", self.salaries[name])
-                    self.salaries[name] *= 2.0
-                    print("New salary: ", self.salaries[name])
-                    total_pay += self.salaries[name]
-                    self.happiness *= 1.1
+            while(input("Would you like to boost an employee? Y/Yes for yes \n").upper() in yeses):
+                print(self.salaries)
+                emp_name = input("Which employee do you want to pay an extra salary? Type in a name. \n")
+                while (emp_name in self.employeenames) == False:
+                    print("They are not an employee.")
+                    emp_name = input("Please pick an employee name. \n")
+                
+                print("Current salary: ", self.salaries[emp_name])
+                self.salaries[emp_name] *= 2.0
+                print("New salary: ", self.salaries[emp_name])
+                total_pay += self.salaries[emp_name]
+                self.happiness *= 1.1
             return budget - total_pay
         
         #val == 1 loops as long as the player wants to adjust salary
         if val == 1:
-            while(input("Would you like to keep changing salaries? Y for yes") == "Y"):
+            while(input("Would you like to change salaries? Y/yes for yes \n").upper() in yeses):
                 print(self.salaries)
-                emp_name = input("Which employee do you want to change the salary of? Type in a name.")
+                emp_name = input("Which employee do you want to change the salary of? Type in a name. \n")
                 while (emp_name in self.employeenames) == False:
-                    print("This is not an employee. Please choose an employee name.")
-                    emp_name = input("Please pick an employee name.")
+                    print("They are not an employee.")
+                    emp_name = input("Please pick an employee name. \n")
                 curr_sal = self.salaries[emp_name]
-                self.salaries[emp_name] = int(input("What is their new salary?"))
-                if curr_sal > self.salaries[emp_name]:
+                #self.salaries[emp_name] = int(input("What is their new salary?"))
+                new_sal = -1
+                try:
+                    new_sal = int(input("What is their new salary? \n"))
+                except:
+                    ValueError
+                while isinstance(new_sal, int) == False or new_sal < 0:
+                    print("That is not a valid salary.")
+                    try:
+                        new_sal = int(input("What is their new salary? \n"))
+                    except:
+                        ValueError
+                self.salaries[emp_name] = new_sal
+                if curr_sal > new_sal:
                     self.happiness /= 1.5
                     print("Your employees did not like this.")
         #val == 2 adds a new employee
         if val == 2:
             print("Total funds: ", budget)
-            newemp = input("What is this new employee's name?")
+            newemp = input("What is this new employee's name? \n")
             self.employeenames.append(newemp)
-            #self.employee_ids[len(self.employeenames) - 1] = newemp
             newsal = random.randint(1, 10)
             self.salaries[newemp] = newsal
             budget = budget - newsal
@@ -139,6 +156,7 @@ class Employees():
             print("2 <- Average salary and whether you pay more than you profit")
             print("3 <- Average happiness level")
             print("4 <- Details on all dictionaries/lists")
+            choice = -1
             try:
                 choice = int(input())
             except:
@@ -160,6 +178,7 @@ class Employees():
             if choice == 3:
                 print(self.employInfo(returnVal = 3))
             if choice == 4:
+                print("Salaries: ")
                 self.getAll()
     #used to automatically pay salaries from a budget amount
     def paySal(self, budget):
@@ -181,6 +200,7 @@ class Employees():
         Side effects:
             prints out the name and salaries of all employees onto the console
         """
+        print("Salaries: ")
         for name in self.salaries:
             print(f"{name}: ", self.salaries[name])
     #used to get all details on all dictionaries/lists
@@ -274,9 +294,9 @@ def run_game(EmployeeFilePath, StockFilePath):
     dfmainTracker = dfmainTracker.append({'Type':2, 'Day':dayCounter, 'Counter':profit}, ignore_index=True)
     #simlation runs for 5 days. 
     max_days = 5
-    empNum = 0
+    empNum = input("How many employees do you want? Max 10 \n")
     try:
-        empNum = int(input("How many employees do you want? Max 10"))
+        empNum = int(empNum)
     except:
         ValueError
     while isinstance(empNum, int) == False or empNum <= 0 or empNum >= 10:
@@ -369,7 +389,7 @@ def run_day(day, funds, profit, inventory, employeeObj):
         print(f"You have paid {salaries_paid} in salaries.")
         print("Funds after paying salaries: ", funds)
         print(input("Press enter to continue"))
-        while input("Would you like to manage employees? Y for yes/N for no") == "Y":
+        while input("Would you like to manage employees? Y/Yes for yes \n").upper() in yeses:
             print("What would you like to do with employees?")
             print("0 <- Pay extra")
             print("1 <- Adjust salaries")
@@ -392,7 +412,7 @@ def run_day(day, funds, profit, inventory, employeeObj):
                     print("3 <- Get employee info") 
                     print("4 <- Get salaries")
                     print("5 <- Nothing")
-                    choice = int(input("What would you like to do with employees?"))
+                    choice = int(input("What would you like to do with employees? \n"))
                 except:
                     ValueError
             if choice == 0:
