@@ -7,9 +7,13 @@ import matplotlib.pyplot as plt
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-
-#MAIN PANDAS DATAFRAME TO KEEP TRACK OF ALL DATA DURING THE SIMULATION
 def GraphFilter(dataframe, userinput):
+    """Filters through the dataframe that is provided after the game is complete
+
+    Args:
+        dataframe (Pandas Dataframe): Contains Funds/Profit data from the store Simulation
+        userinput (Str): User input asking which data they would like to display in graph form
+    """
     if userinput == "1":
         fundsFiltered = dataframe[dataframe['Type'] == 1]
         graphGenerator(fundsFiltered)
@@ -20,8 +24,7 @@ def GraphFilter(dataframe, userinput):
         plt.show()
     while input("Would you like to display another graph? (Y/N)").upper() != "N":
         GraphFilter(dataframe, input("Which graphs would you like to display?\n 1: Funds during the game\n 2: Profit During the game\n"))
-    print("Thank you for playing")
-    
+    print("Thank you for playing")  
 
 def graphGenerator(dataframe):
     dataframe = dataframe[['Day', 'Counter']]
