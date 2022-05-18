@@ -320,10 +320,18 @@ def run_day(day, funds, profit, inventory, employeeObj):
         """Prints store status, calls the store simulation method, then
         increases the day.
         
+        Args:
+            day (int): the current day of the simulation
+            funds (inst): the current amount of funds the player has
+            profit (int): the profit the player has made so far
+            inventory (dict): a dict with a tuple as a key and a int as a 
+                value. the store's inventory
+            employeeObj (Employee): an Employees object containing employee
+                information
+        
         Side effects: 
             Prints information to the terminal for the player to 
             see store status
-            Can modifiy the day variable.
         """
         #give player store status
         print(f'''Welcome to day {day}. Here is the status of your 
@@ -398,6 +406,8 @@ def run_day(day, funds, profit, inventory, employeeObj):
 
         profit += sim_profit
         funds += profit
+        
+        
         #increase the day variable
         day += 1
         return day, funds, profit, inventory
