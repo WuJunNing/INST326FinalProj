@@ -4,9 +4,19 @@ import re
 import random
 import pandas as pd
 import matplotlib.pyplot as plt
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 
 #MAIN PANDAS DATAFRAME TO KEEP TRACK OF ALL DATA DURING THE SIMULATION
+def graphGenerator(dataframe):
+    print(dataframe)
+    FCDataFrame = dataframe[dataframe['Type'] == 1]
+    FCDataFrame = FCDataFrame[['Day', 'Counter']]
+    FCDataFrame.plot()
+    plt.show()
 
+    
 
 class Employees():
     '''Creates the Employee class. 
@@ -118,7 +128,6 @@ def run_game(EmployeeFilePath, StockFilePath):
         fundsCounter = 1000
         dfmainTracker = dfmainTracker.append({'Type':1, 'Day':dayCounter, 'Counter':fundsCounter}, ignore_index=True)
         dfmainTracker = dfmainTracker.append({'Type':2, 'Day':dayCounter, 'Counter':profit}, ignore_index=True)
-            
        #simlation runs for 5 days. 
         max_days = 5
         employee = Employees(int(input("How many employees do you want?")), max_days, EmployeeFilePath)
@@ -137,13 +146,9 @@ def run_game(EmployeeFilePath, StockFilePath):
         #completes 5 days or runs out of money
         while dayCounter < max_days + 1 and fundsCounter > 0:
             dayCounter, fundsCounter, profit, inventory = run_day(dayCounter, fundsCounter, profit, inventory, employee)
-            
-            
-            
-              
-        
-            
-        
+            dfmainTracker = dfmainTracker.append({'Type':1, 'Day':dayCounter, 'Counter':fundsCounter}, ignore_index=True)
+            dfmainTracker = dfmainTracker.append({'Type':2, 'Day':dayCounter, 'Counter':profit}, ignore_index=True)
+
         #player loses if they run out of money
         if fundsCounter <= 0:
              print(f'''Sorry, you ran out of money after day {dayCounter - 1}''')
@@ -246,10 +251,9 @@ def simulate_day(inventory,profit, employeeObj):
     return inventory, profit
     
 def main(storeName, EmployeeFilePath, StockFilePath):
+    graphGenerator(run_game(EmployeeFilePath, StockFilePath))
     
-
-
-    run_game(EmployeeFilePath, StockFilePath)
+    
 def parse_args(arglist):
     parser = ArgumentParser()
     parser.add_argument("StoreName", help="Name of the store")
