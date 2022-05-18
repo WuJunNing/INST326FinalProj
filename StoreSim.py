@@ -28,9 +28,11 @@ def GraphFilter(dataframe, userinput):
         profitFiltered = dataframe[dataframe['Type']==2]
         graphGenerator(profitFiltered)
         plt.show()
-    while input("Would you like to display another graph? (Y/N)").upper() != "N":
+    cmd = input("Would you like to display another graph? (Y/Yes)").upper()
+    if cmd in yeses:
         GraphFilter(dataframe, input("Which graphs would you like to display?\n 1: Funds during the game\n 2: Profit During the game\n"))
-    
+    else:
+        pass
 
 def graphGenerator(dataframe):
     """Generates graph based on provided dataframe
