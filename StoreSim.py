@@ -30,6 +30,11 @@ def GraphFilter(dataframe, userinput):
     
 
 def graphGenerator(dataframe):
+    """Generates graph based on provided dataframe
+
+    Args:
+        dataframe (Pandas Dataframe): Contains Day Number and Counter Nummber information based on graph provided by the store simulation program. 
+    """
     dataframe = dataframe[['Day', 'Counter']]
     dataframe.plot()
     plt.show()
