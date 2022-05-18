@@ -5,7 +5,9 @@ import random
 import pandas as pd
 import matplotlib.pyplot as plt
 #------------------------------
-#This import for "Warnings" is to mute the warnings that happen throughout the program for pandas ".append()"
+# This import for "Warnings" is to mute the warnings that happen throughout the program for pandas ".append()"
+# The warnings import is taken from the Python doucmentation "warning control". 
+# A full citation of this module can be found in the README.
 import warnings
 warnings.simplefilter("ignore")
 #----------------------------------------------------------------
