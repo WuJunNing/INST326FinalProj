@@ -4,8 +4,11 @@ import re
 import random
 import pandas as pd
 import matplotlib.pyplot as plt
+#------------------------------
+#This import for "Warnings" is to mute the warnings that happen throughout the program for pandas ".append()"
 import warnings
 warnings.simplefilter("ignore")
+#----------------------------------------------------------------
 
 def GraphFilter(dataframe, userinput):
     """Filters through the dataframe that is provided after the game is complete
