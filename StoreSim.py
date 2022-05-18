@@ -5,7 +5,7 @@ import random
 import pandas as pd
 import matplotlib.pyplot as plt
 import warnings
-warnings.simplefilter(action='ignore', category=FutureWarning)
+warnings.simplefilter("ignore")
 
 def GraphFilter(dataframe, userinput):
     """Filters through the dataframe that is provided after the game is complete
