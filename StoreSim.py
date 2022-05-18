@@ -113,12 +113,12 @@ def read_stock(filename):
     ''' reads a file that sets the items, prices, and stock.
     opens the file using a with statement and reads with regex.
     Args:
-        store(Store): a store object.
+        filename(str): a string containing the directory of the file
+        containing the store stock.
     Side effects:
         creates inventory(dict), with keys being tuples of the
         item name and price, and values being the stock amount.
     '''
-    #opens the file
     with open(filename, "r", encoding = "utf-8") as f:
         inventory = {}
         for line in f:
@@ -128,8 +128,6 @@ def read_stock(filename):
                     (?P<price>\d*)""")
             match = re.search(expr,line)
             if match:
-                    # puts item name and price into list, which will be the key
-                    # default inventory amount is 50, this is the value
                 itemname = match.group("item")
                 itemprice = match.group("price")
                 itemlisting = (itemname, itemprice)
@@ -238,13 +236,17 @@ def simulate_day(inventory,profit, employeeObj):
     influenced by certain external events in the game.
                 
     Args: 
-        store (Store): a Store object.
+        inventory(dict): the inventory of the store
+        profit(int): the current profit of the player
+        employeeObj(employee): the employee data for the store
         
     Returns: 
-        store (Store): a Store object. 
+        inventory(dict): the inventory of the store
+        profit(int): the profit of the player
     
     Side Effects:
-        Can modify the attributes profit and money.
+        Can modify the profit and inventory. 
+        prints information to the console.
     '''
     maxcustomers = len(employeeObj.employee_ids) * 15
     customercount = random.randint(0,maxcustomers)
