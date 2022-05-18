@@ -9,11 +9,23 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 
 #MAIN PANDAS DATAFRAME TO KEEP TRACK OF ALL DATA DURING THE SIMULATION
+def GraphFilter(dataframe, userinput):
+    if userinput == "1":
+        fundsFiltered = dataframe[dataframe['Type'] == 1]
+        graphGenerator(fundsFiltered)
+        plt.show()
+    elif userinput == "2":
+        profitFiltered = dataframe[dataframe['Type']==2]
+        graphGenerator(profitFiltered)
+        plt.show()
+    while input("Would you like to display another graph?").upper() != "N":
+        GraphFilter(dataframe, input("Which graphs would you like to display?\n 1: Funds during the game\n 2: Profit During the game\n"))
+    print("Thank you for playing")
+    
+
 def graphGenerator(dataframe):
-    print(dataframe)
-    FCDataFrame = dataframe[dataframe['Type'] == 1]
-    FCDataFrame = FCDataFrame[['Day', 'Counter']]
-    FCDataFrame.plot()
+    dataframe = dataframe[['Day', 'Counter']]
+    dataframe.plot()
     plt.show()
 
     
@@ -251,7 +263,7 @@ def simulate_day(inventory,profit, employeeObj):
     return inventory, profit
     
 def main(storeName, EmployeeFilePath, StockFilePath):
-    graphGenerator(run_game(EmployeeFilePath, StockFilePath))
+    GraphFilter(run_game(EmployeeFilePath, StockFilePath), input("Which graphs would you like to display?\n 1: Funds during the game\n 2: Profit During the game\n"))
     
     
 def parse_args(arglist):
