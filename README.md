@@ -22,3 +22,4 @@ Yabing: read_stock() and simulate_day() functions. regular expressions and with 
 ## Citations
 "Warnings - Warning Control" Python 3.10.4 Documentation <br>
 Usage: Program relies on using Pandas.append() Method in order to operate the dataframes used for graphing, this module silences all FutureWarning warnings prompted by the program. 
+https://docs.python.org/3/library/warnings.html
