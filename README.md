@@ -5,7 +5,7 @@ employeenames.txt contains a list of names of the employees to be read by the pr
 
 ## Running the program from the command line<br>
 enter the following into the command line:<br>
-`StoreSim.py AAA employeenames.txt storestock.txt`<br>
+`StoreSim.py employeenames.txt storestock.txt`<br>
 
 ## Using the program and interpreting output <br>
 For each day simulated, follow the prompts printed to manage the employees and keep your store afloat.<br>
