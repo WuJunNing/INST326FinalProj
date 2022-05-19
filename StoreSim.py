@@ -14,11 +14,17 @@ warnings.simplefilter("ignore")
 
 yeses = ["YES", "Y"]
 def GraphFilter(dataframe, userinput):
-    """Filters through the dataframe that is provided after the game is complete
+    """Filters through the dataframe provided after the game is complete.
+    Generates a graph of the data for the user to see.
 
     Args:
-        dataframe (Pandas Dataframe): Contains Funds/Profit data from the store Simulation
-        userinput (Str): User input asking which data they would like to display in graph form
+        dataframe (Pandas Dataframe): Contains Funds/Profit data from the
+        store Simulation
+        userinput (Str): User input of which choice of graph/data the
+        user would like to see.
+    Side effects:
+        prints prompts to the user to display more graphs if needed.
+    
     """
     if userinput == "1":
         fundsFiltered = dataframe[dataframe['Type'] == 1]
@@ -43,7 +49,10 @@ def graphGenerator(dataframe):
     """Generates graph based on provided dataframe
 
     Args:
-        dataframe (Pandas Dataframe): Contains Day Number and Counter Nummber information based on graph provided by the store simulation program. 
+        dataframe (Pandas Dataframe): Contains Day Number and Counter Nummber
+        information based on graph provided by the store simulation program. 
+    Side effects:
+        creates and shows the graphed data for the user to see.
     """
     dataframe = dataframe[['Day', 'Counter']]
     dataframe.plot()
@@ -487,6 +496,16 @@ def simulate_day(inventory,profit, employeeObj):
     return inventory, profit, num_employees
     
 def main(EmployeeFilePath, StockFilePath):
+    ''' Starts the game using the employee names and stock items.
+    Args:
+        EmployeeFilePath(str): the directory of the text file containing the
+        names of employees
+        StockFilePath(str): the directory of the text file containing the
+        stock items and their prices
+    Side effects:
+        prints prompts and information to console for user to see
+        prints end message for the user at end of game.
+    '''
     graph_info = run_game(EmployeeFilePath, StockFilePath)
     print("Would you like to display graphs?")
     print("1 <- Funds during the game")
@@ -494,7 +513,7 @@ def main(EmployeeFilePath, StockFilePath):
     print("Any other key <- Don't show graphs")
     choice = input()
     GraphFilter(graph_info, choice)
-    print("Thank you for playing")  
+    print("Thank you for playing!")  
     
 def parse_args(arglist):
     parser = ArgumentParser()
