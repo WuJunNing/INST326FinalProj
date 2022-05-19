@@ -24,15 +24,20 @@ def GraphFilter(dataframe, userinput):
         fundsFiltered = dataframe[dataframe['Type'] == 1]
         graphGenerator(fundsFiltered)
         plt.show()
+        cmd = input("Would you like to display another graph? (Y/Yes)").upper()
+        if cmd in yeses:
+            GraphFilter(dataframe, input("Which graphs would you like to display?\n 1: Funds during the game\n 2: Profit During the game\n"))
+        else:
+            pass
     elif userinput == "2":
         profitFiltered = dataframe[dataframe['Type']==2]
         graphGenerator(profitFiltered)
         plt.show()
-    cmd = input("Would you like to display another graph? (Y/Yes)").upper()
-    if cmd in yeses:
-        GraphFilter(dataframe, input("Which graphs would you like to display?\n 1: Funds during the game\n 2: Profit During the game\n"))
-    else:
-        pass
+        cmd = input("Would you like to display another graph? (Y/Yes)").upper()
+        if cmd in yeses:
+            GraphFilter(dataframe, input("Which graphs would you like to display?\n 1: Funds during the game\n 2: Profit During the game\n"))
+        else:
+            pass
 
 def graphGenerator(dataframe):
     """Generates graph based on provided dataframe
@@ -482,7 +487,13 @@ def simulate_day(inventory,profit, employeeObj):
     return inventory, profit, num_employees
     
 def main(EmployeeFilePath, StockFilePath):
-    GraphFilter(run_game(EmployeeFilePath, StockFilePath), input("Which graphs would you like to display?\n 1: Funds during the game\n 2: Profit During the game\n"))
+    graph_info = run_game(EmployeeFilePath, StockFilePath)
+    print("Would you like to display graphs?")
+    print("1 <- Funds during the game")
+    print("2 <- Profit during the game")
+    print("Any other key <- Don't show graphs")
+    choice = input()
+    GraphFilter(graph_info, choice)
     print("Thank you for playing")  
     
 def parse_args(arglist):
