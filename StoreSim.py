@@ -276,7 +276,12 @@ class Employees():
             particular day. Defaults to 0.
 
         Returns:
-            _type_: _description_
+            underMsg (str): less than half the employees worked if returned
+            overMsg (str): over half the employees worked if returned
+            salpro (str): Average salary is greater than average profit
+            prosal (str): Average profit is greater than average salary
+            wellhap (str): Average happiness is well
+            lowhap (str): Average happiness is low
         Side effects:
             prints out conditions based on the returnVal given and the 
             comparisons made
@@ -284,7 +289,9 @@ class Employees():
         if returnVal == 1:
             print(f"Number of working employees: {int(numEmp)}"
                   f" out of {len(self.employeenames)}")
-            return "Less than half your employees worked today." if (numEmp < len(self.employeenames)/2) else "More than half your employees worked today."
+            underMsg = "Less than half your employees worked today."
+            overMsg = "More than half your employees worked today."
+            return underMsg if (numEmp < len(self.employeenames)/2) else overMsg
         if returnVal == 2:
             total_sal = 0
             for name in self.salaries:
@@ -293,10 +300,14 @@ class Employees():
             avg_profit = total_profit / len(self.employeenames)
             print("Average salary: ", avg_sal)
             print("Average profit per employee: ", avg_profit)
-            return "Your average salary pay is greater than profit" if (avg_sal > avg_profit) else "Your average salary pay is less than profit per employee."
+            salpro = "Your average salary pay is greater than profit"
+            prosal = "Your average salary pay is less than profit per employee."
+            return salpro if (avg_sal > avg_profit) else prosal
         if returnVal == 3:
             print("Employee happiness is: ", self.happiness)
-            return "Your average happiness is doing well" if (self.happiness > 50) else "Your employee happiness is pretty low."       
+            wellhap = "Your average happiness is doing well"
+            lowhap = "Your employee happiness is pretty low."   
+            return wellhap if (self.happiness > 50) else lowhap     
     
 
 def read_stock(filename):
@@ -338,7 +349,7 @@ def run_game(EmployeeFilePath, StockFilePath):
     dayCounter = 1
     fundsCounter = 1000
     dfmainTracker = dfmainTracker.append({'Type':1, 'Day':dayCounter, 
-                                          'Counter':fundsCounter}, ignore_index=True)
+                                    'Counter':fundsCounter}, ignore_index=True)
     dfmainTracker = dfmainTracker.append({'Type':2, 'Day':dayCounter, 
                                           'Counter':profit}, ignore_index=True)
     #simlation runs for 5 days. 
