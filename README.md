@@ -15,7 +15,7 @@ At the end of the simulation, you will be the option between 2 different graphs 
 
 ## Attributions
 Luis: graphFilter() and graphGenerator() functions. pandas and data visualization.<br>
-Simon: Employee class and its methods. optional parameters/keyword arguments and conditional expressions.<br>
+Simon: Employee class and its methods. optional parameters/keyword arguments(manageEmploys()) and conditional expressions(employInfo()).<br>
 Ogenna: run_game() and run_day() functions. f-strings and sequence unpacking.<br>
 Yabing: read_stock() and simulate_day() functions. regular expressions and with statements.<br>
 
