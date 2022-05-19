@@ -5,9 +5,10 @@ import random
 import pandas as pd
 import matplotlib.pyplot as plt
 #------------------------------
-# This import for "Warnings" is to mute the warnings that happen throughout the program for pandas ".append()"
-# The warnings import is taken from the Python doucmentation "warning control". 
-# A full citation of this module can be found in the README.
+# This import for "Warnings" is to mute the warnings that happen throughout
+# the program for pandas ".append()". The warnings import is taken from the
+# Python doucmentation "warning control". A full citation of this module 
+# can be found in the README.
 import warnings
 warnings.simplefilter("ignore")
 #----------------------------------------------------------------
@@ -32,7 +33,9 @@ def GraphFilter(dataframe, userinput):
         plt.show()
         cmd = input("Would you like to display another graph? (Y/Yes)").upper()
         if cmd in yeses:
-            GraphFilter(dataframe, input("Which graphs would you like to display?\n 1: Funds during the game\n 2: Profit During the game\n"))
+            GraphFilter(dataframe, input("Which graph would you like to see?"
+                                         + "\n 1: Funds during the game"
+                                         + "\n2: Profit During the game\n"))
         else:
             pass
     elif userinput == "2":
@@ -41,7 +44,9 @@ def GraphFilter(dataframe, userinput):
         plt.show()
         cmd = input("Would you like to display another graph? (Y/Yes)").upper()
         if cmd in yeses:
-            GraphFilter(dataframe, input("Which graphs would you like to display?\n 1: Funds during the game\n 2: Profit During the game\n"))
+            GraphFilter(dataframe, input("Which graph would you like to see?"
+                                         + "\n 1: Funds during the game"
+                                         + "\n 2: Profit During the game\n"))
         else:
             pass
 
@@ -64,21 +69,25 @@ class Employees():
     '''Creates the Employee class. 
     Attributes:
         employeenames (list): a list strings of employee names
-        salaries (dict): a dictionary of random salaries with key valyes in employeenames
-        happiness (int): a happiness scale of employees. Fluctuates with decisions
+        salaries (dict): a dictionary of random salaries with 
+        key valyes in employeenames
+        happiness (int): a happiness scale of employees. 
+        Fluctuates with decisions
     '''
     def __init__(self, num_employees, filename):
         """Initializes an Employees object
 
         Args:
             num_employees (int): the number of initial employers hired
-            filename (str, optional): a string containing the path to a file of employee names 
+            filename (str, optional): a string containing the path to a
+            file of employee names 
         """
         
         salary_dict = dict()
         employee_names = list()
         
-        #opens a text file of names and fills employee_names with names in order equal to the number chosen by the player
+        #opens a text file of names and fills employee_names with names 
+        # in order equal to the number chosen by the player
         with open(filename, "r", encoding = "utf-8") as f:
             curr_count = 0
             for name in f:
@@ -98,26 +107,35 @@ class Employees():
         self.salaries = salary_dict
         self.happiness = 100
         
-    def manageEmploys(self, val = 0, budget = 0, profit_earned = 0, num_emp = 0):
-        """Based on various user inputs, manages values of Employee class attributes
+    def manageEmploys(self, val=0, budget=0, profit_earned=0, num_emp=0):
+        """Based on various user inputs, manages values of Employee 
+        class attributes
 
         Args:
-            val (int, optional): A user input value to run a specific action. Defaults to 0.
-            budget (int, optional): A budget value indicating how much money is left. Defaults to 0.
-            profit_earned (int, optional): A profit value of how much profit was made. Defaults to 0.
-            num_emp (int, optional): A value indicating the number of employees worked. Defaults to 0.
+            val (int, optional): A user input value to run a specific action.
+            Defaults to 0.
+            budget (int, optional): A budget value indicating how much
+            money is left. Defaults to 0.
+            profit_earned (int, optional): A profit value of how much profit
+            was made. Defaults to 0.
+            num_emp (int, optional): A value indicating the number of 
+            employees worked. Defaults to 0.
 
         Returns:
             _type_: _description_
         Side effects:
-            prints out messages to the console asking for user input and status messages of employee attributes
+            prints out messages to the console asking for user input and
+            status messages of employee attributes
         """
-        #val == 0 multiples a player salary and happiness and subtracts from funds a certain amount equal to the new salaries
+        #val == 0 multiples a player salary and happiness and subtracts from
+        # funds a certain amount equal to the new salaries
         if val == 0:
             total_pay = 0
-            while(input("Would you like to boost an employee? Y/Yes for yes \n").upper() in yeses):
+            while(input("Would you like to boost an employee?" +
+                        " Y/Yes for yes \n").upper() in yeses):
                 print(self.salaries)
-                emp_name = input("Which employee do you want to pay an extra salary? Type in a name. \n")
+                emp_name = input("Which employee do you want to"
+                                 + " pay an extra salary? Type in a name. \n")
                 while (emp_name in self.employeenames) == False:
                     print("They are not an employee.")
                     emp_name = input("Please pick an employee name. \n")
@@ -131,14 +149,15 @@ class Employees():
         
         #val == 1 loops as long as the player wants to adjust salary
         if val == 1:
-            while(input("Would you like to change salaries? Y/yes for yes \n").upper() in yeses):
+            while(input("Would you like to change salaries?"
+                        + " Y/yes for yes \n").upper() in yeses):
                 print(self.salaries)
-                emp_name = input("Which employee do you want to change the salary of? Type in a name. \n")
+                emp_name = input("Which employee do you want to "
+                                 + "change the salary of? Type in a name. \n")
                 while (emp_name in self.employeenames) == False:
                     print("They are not an employee.")
                     emp_name = input("Please pick an employee name. \n")
                 curr_sal = self.salaries[emp_name]
-                #self.salaries[emp_name] = int(input("What is their new salary?"))
                 new_sal = -1
                 try:
                     new_sal = int(input("What is their new salary? \n"))
@@ -167,11 +186,13 @@ class Employees():
             print("Your leftover funds is: ", budget)
             print(input("Press enter to continue"))
             return budget
-        #val == 3 provides a selection of options where the player can get different information on the employees
+        #val == 3 provides a selection of options where the player can get 
+        # different information on the employees
         if val == 3:
             print("What information would you like?")
             print("1 <- Number of working employees")
-            print("2 <- Average salary and whether you pay more than you profit")
+            print("2 <- Average salary and whether you pay"
+                  + " more than you profit")
             print("3 <- Average happiness level")
             print("4 <- Details on all dictionaries/lists")
             choice = -1
@@ -183,7 +204,8 @@ class Employees():
                 print("Please enter a valid choice")
                 try:
                     print("1 <- Working employees to total")
-                    print("2 <- Average salary and whether you pay more than you profit")
+                    print("2 <- Average salary and whether you pay"
+                          + " more than you profit")
                     print("3 <- Average happiness level")
                     print("4 <- Details on all dictionaries/lists")
                     choice = int(input())
@@ -192,7 +214,7 @@ class Employees():
             if choice == 1:
                 print(self.employInfo(returnVal = 1, numEmp = num_emp))
             if choice == 2:
-                print(self.employInfo(returnVal = 2, total_profit = profit_earned))
+                print(self.employInfo(returnVal=2, total_profit=profit_earned))
             if choice == 3:
                 print(self.employInfo(returnVal = 3))
             if choice == 4:
@@ -225,7 +247,8 @@ class Employees():
     def getAll(self):
         """Gets all attributes with names, salaries, and happiness
         Side effects:
-            prints out the salary attribute dictionary, name list, and happiness value
+            prints out the salary attribute dictionary, name list, 
+            and happiness value
         """
         print("Employee names:", self.employeenames)
         #print("Employee ids: ", self.employee_ids)
@@ -239,23 +262,29 @@ class Employees():
         """
         return len(self.employeenames) * (self.happiness/100)
         
-    #used by the manageEmploy method to return different information on employees
+    #used by the manageEmploy method to return different
+    # information on employees
     def employInfo(self, returnVal = 1, total_profit = 0, numEmp = 0):
-        """A method that returns a comparison of employee values to the status of the store
+        """A method that returns a comparison of employee values to the 
+        status of the store
 
         Args:
-            returnVal (int, optional): A value indicating the user choice. Defaults to 1.
+            returnVal (int, optional): A value indicating the user choice.
+            Defaults to 1.
             total_profit (int, optional): the total profit made. Defaults to 0.
-            numEmp (int, optional): the number of employees working on a particular day. Defaults to 0.
+            numEmp (int, optional): the number of employees working on a 
+            particular day. Defaults to 0.
 
         Returns:
             _type_: _description_
         Side effects:
-            prints out conditions based on the returnVal given and the comparisons made
+            prints out conditions based on the returnVal given and the 
+            comparisons made
         """
         if returnVal == 1:
-            print(f"Number of working employees: {int(numEmp)} out of {len(self.employeenames)}")
-            return "Less than half your employees worked today." if (numEmp < len(self.employeenames)/2) else  "More than half your employees worked today."
+            print(f"Number of working employees: {int(numEmp)}"
+                  f" out of {len(self.employeenames)}")
+            return "Less than half your employees worked today." if (numEmp < len(self.employeenames)/2) else "More than half your employees worked today."
         if returnVal == 2:
             total_sal = 0
             for name in self.salaries:
@@ -308,8 +337,10 @@ def run_game(EmployeeFilePath, StockFilePath):
     profit = 0
     dayCounter = 1
     fundsCounter = 1000
-    dfmainTracker = dfmainTracker.append({'Type':1, 'Day':dayCounter, 'Counter':fundsCounter}, ignore_index=True)
-    dfmainTracker = dfmainTracker.append({'Type':2, 'Day':dayCounter, 'Counter':profit}, ignore_index=True)
+    dfmainTracker = dfmainTracker.append({'Type':1, 'Day':dayCounter, 
+                                          'Counter':fundsCounter}, ignore_index=True)
+    dfmainTracker = dfmainTracker.append({'Type':2, 'Day':dayCounter, 
+                                          'Counter':profit}, ignore_index=True)
     #simlation runs for 5 days. 
     max_days = 5
     empNum = input("How many employees do you want? Max 10 \n")
@@ -336,9 +367,16 @@ def run_game(EmployeeFilePath, StockFilePath):
     #continues looping and running the simulation until the player 
     #completes 5 days or runs out of money
     while dayCounter < max_days + 1 and fundsCounter > 0:
-        dayCounter, fundsCounter, profit, inventory = run_day(dayCounter, fundsCounter, profit, inventory, employee)
-        dfmainTracker = dfmainTracker.append({'Type':1, 'Day':dayCounter, 'Counter':fundsCounter}, ignore_index=True)
-        dfmainTracker = dfmainTracker.append({'Type':2, 'Day':dayCounter, 'Counter':profit}, ignore_index=True)
+        dayCounter, fundsCounter, profit, inventory = run_day(dayCounter,
+                                                              fundsCounter,
+                                                              profit,inventory,
+                                                              employee)
+        dfmainTracker = dfmainTracker.append({'Type':1, 'Day':dayCounter, 
+                                              'Counter':fundsCounter},
+                                             ignore_index=True)
+        dfmainTracker = dfmainTracker.append({'Type':2, 'Day':dayCounter, 
+                                              'Counter':profit},
+                                             ignore_index=True)
         print("Final employee info:")
         print("Employee names:", employee.employeenames)
         print("Employee salaries: ", employee.salaries)
@@ -346,7 +384,7 @@ def run_game(EmployeeFilePath, StockFilePath):
         print(input("Press enter to continue"))
     #player loses if they run out of money
         if fundsCounter <= 0:
-            print(f'''Sorry, you ran out of money after day {dayCounter - 1}''')
+            print(f"""Sorry, you ran out of money after day {dayCounter - 1}""")
             
     #return either a win message or a lose message after 5 days. 
     #win condition is currently $500 dollars profit
@@ -392,7 +430,8 @@ def run_day(day, funds, profit, inventory, employeeObj):
         itemslist = list(inventory)
         while itemindex < 15:
             item = itemslist[itemindex]
-            print(f'Item: {item[0]}, Price: ${item[1]}, Quantity: {inventory[itemslist[itemindex]]}')
+            print(f'Item: {item[0]}, Price: ${item[1]}, Quantity: \
+                  {inventory[itemslist[itemindex]]}')
             itemindex += 1
 
         #simulation will now run
@@ -400,14 +439,16 @@ def run_day(day, funds, profit, inventory, employeeObj):
         print(f'''The simulation for day {day} will now run''')
                 
         #run a simulation of customers buying items in the store for a day
-        inventory, sim_profit, workingEmp = simulate_day(inventory,profit, employeeObj)
+        inventory, sim_profit, workingEmp = simulate_day(inventory,profit, 
+                                                         employeeObj)
         print("Funds before salaries: ", funds)
         salaries_paid = employeeObj.paySal(funds)
         funds -= salaries_paid
         print(f"You have paid {salaries_paid} in salaries.")
         print("Funds after paying salaries: ", funds)
         print(input("Press enter to continue"))
-        while input("Would you like to manage employees? Y/Yes for yes \n").upper() in yeses:
+        while input("Would you like to manage employees?" +
+                    " Y/Yes for yes \n").upper() in yeses:
             print("What would you like to do with employees?")
             print("0 <- Pay extra")
             print("1 <- Adjust salaries")
@@ -430,7 +471,7 @@ def run_day(day, funds, profit, inventory, employeeObj):
                     print("3 <- Get employee info") 
                     print("4 <- Get salaries")
                     print("5 <- Nothing")
-                    choice = int(input("What would you like to do with employees? \n"))
+                    choice = int(input("Please enter your choice:\n"))
                 except:
                     ValueError
             if choice == 0:
@@ -440,7 +481,8 @@ def run_day(day, funds, profit, inventory, employeeObj):
             if choice == 2:
                 funds = employeeObj.manageEmploys(budget = funds, val = 2)
             if choice == 3:
-                employeeObj.manageEmploys(val = 3, profit_earned = sim_profit, num_emp = workingEmp)
+                employeeObj.manageEmploys(val = 3, profit_earned = sim_profit,
+                                          num_emp = workingEmp)
             if choice == 4:
                 employeeObj.getSal()
             if choice == 5:
@@ -491,8 +533,8 @@ def simulate_day(inventory,profit, employeeObj):
         newamount = inventory[itemslist[itemindex]] = currentamount - 1
         profit += int(price)
         print(f"""customer {person + 1} bought 1 {purchase[0]} for ${price}. \
-                the previous amount was {currentamount}. the new amount is {newamount}. \
-                profit is now ${profit}.""")
+                the previous amount was {currentamount}. \
+                the new amount is {newamount}. profit is now ${profit}.""")
     return inventory, profit, num_employees
     
 def main(EmployeeFilePath, StockFilePath):
@@ -518,7 +560,7 @@ def main(EmployeeFilePath, StockFilePath):
 def parse_args(arglist):
     parser = ArgumentParser()
     parser.add_argument("EmployeeList", help = "Excel file of employees")
-    parser.add_argument("StockList", help = "The text file of the stock for the store")
+    parser.add_argument("StockList", help = "Text file of stock and prices")
     return parser.parse_args(arglist)    
 
 if __name__ == "__main__":
